@@ -2,9 +2,7 @@
 "use server";
 
 import { z } from "zod";
-import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { firebaseConfig } from "@/firebase/config";
+import * as admin from "firebase-admin";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -12,15 +10,16 @@ const contactSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters long."),
 });
 
-// A single, shared Firebase App instance
-let app: FirebaseApp;
-if (!getApps().length) {
-  app = initializeApp(firebaseConfig);
-} else {
-  app = getApp();
+// Initialize Firebase Admin SDK
+// This function ensures that the SDK is initialized only once.
+function initializeFirebaseAdmin() {
+  if (admin.apps.length === 0) {
+    // When running in a Google Cloud environment (like Firebase Functions or Cloud Run),
+    // the SDK automatically discovers service account credentials.
+    // For local development, you would set the GOOGLE_APPLICATION_CREDENTIALS environment variable.
+    admin.initializeApp();
+  }
 }
-const db = getFirestore(app);
-
 
 export async function submitContactForm(data: z.infer<typeof contactSchema>) {
   const validatedFields = contactSchema.safeParse(data);
@@ -35,11 +34,13 @@ export async function submitContactForm(data: z.infer<typeof contactSchema>) {
   }
 
   try {
-    const submissionsCollection = collection(db, 'contactFormSubmissions');
+    initializeFirebaseAdmin();
+    const db = admin.firestore();
+    const submissionsCollection = db.collection('contactFormSubmissions');
     
-    await addDoc(submissionsCollection, {
+    await submissionsCollection.add({
       ...validatedFields.data,
-      submittedAt: serverTimestamp(),
+      submittedAt: admin.firestore.FieldValue.serverTimestamp(),
     });
 
     return {
