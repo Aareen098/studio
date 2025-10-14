@@ -32,7 +32,7 @@ export function HeroSection() {
           </div>
           <div className="flex justify-center">
             <Image
-              src="/aareen-headshot.png"
+              src="https://picsum.photos/seed/headshot/400/400"
               alt="A professional headshot of Aareen."
               data-ai-hint="professional headshot"
               width={400}
