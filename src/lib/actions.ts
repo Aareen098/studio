@@ -4,13 +4,22 @@
 import { z } from "zod";
 import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { firebaseConfig } from "@/firebase/config";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.string().email("Invalid email address."),
   message: z.string().min(10, "Message must be at least 10 characters long."),
 });
+
+const firebaseConfig = {
+  projectId: 'studio-6796978752-8c716',
+  appId: '1:363506330731:web:2bd69d0ce84a4c864a952e',
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: 'studio-6796978752-8c716.firebaseapp.com',
+  measurementId: '',
+  messagingSenderId: '363506330731',
+};
+
 
 let app: FirebaseApp;
 if (!getApps().length) {
