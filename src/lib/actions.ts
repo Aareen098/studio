@@ -2,7 +2,9 @@
 "use server";
 
 import { z } from "zod";
-import * as admin from 'firebase-admin';
+import { initializeApp, getApps } from 'firebase/app';
+import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { firebaseConfig } from "@/firebase/config";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -10,20 +12,16 @@ const contactSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters long."),
 });
 
-// A function to initialize Firebase Admin SDK if not already done.
-function initializeFirebaseAdmin() {
-  if (!admin.apps.length) {
+// A function to initialize Firebase client SDK on the server if not already done.
+function initializeFirebaseSDK() {
+  if (!getApps().length) {
     try {
-      // Use applicationDefault for server environments like Vercel
-      admin.initializeApp({
-        credential: admin.credential.applicationDefault(),
-      });
+      return initializeApp(firebaseConfig);
     } catch (error: any) {
-      console.error('Firebase admin initialization error:', error.message);
-      // Avoid throwing to prevent app crashes, but log the failure.
+      console.error('Firebase client SDK initialization error on server:', error.message);
     }
   }
-  return admin.firestore();
+  return getApps()[0];
 }
 
 export async function submitContactForm(data: z.infer<typeof contactSchema>) {
@@ -39,13 +37,16 @@ export async function submitContactForm(data: z.infer<typeof contactSchema>) {
   }
 
   try {
-    // Ensure Firebase is initialized and get the Firestore instance.
-    const db = initializeFirebaseAdmin();
-    const submissionsCollection = db.collection('contactFormSubmissions');
+    const app = initializeFirebaseSDK();
+    if (!app) {
+        throw new Error("Firebase initialization failed on the server.");
+    }
+    const db = getFirestore(app);
+    const submissionsCollection = collection(db, 'contactFormSubmissions');
     
-    await submissionsCollection.add({
+    await addDoc(submissionsCollection, {
       ...validatedFields.data,
-      submittedAt: admin.firestore.FieldValue.serverTimestamp(),
+      submittedAt: serverTimestamp(),
     });
 
     return {
