@@ -11,7 +11,7 @@ export function HeroSection() {
   );
 
   return (
-    <section id="home" className="py-24 sm:py-32 lg:py-40">
+    <section id="home" className="py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div className="text-center lg:text-left">
