@@ -14,10 +14,9 @@ const contactSchema = z.object({
 // This function ensures that the SDK is initialized only once.
 function initializeFirebaseAdmin() {
   if (admin.apps.length === 0) {
-    // When running in a Google Cloud environment (like Firebase Functions or Cloud Run),
-    // the SDK automatically discovers service account credentials.
-    // For local development, you would set the GOOGLE_APPLICATION_CREDENTIALS environment variable.
-    admin.initializeApp();
+    admin.initializeApp({
+      credential: admin.credential.applicationDefault()
+    });
   }
 }
 
