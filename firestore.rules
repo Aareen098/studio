@@ -1,0 +1,62 @@
+/**
+ * @file Firestore Security Rules
+ * @description This ruleset defines access control for the `contactFormSubmissions` collection.
+ *
+ * Core Philosophy:
+ *   This ruleset allows only authenticated administrators to read and manage contact form submissions.
+ *   All other users are denied access. This ensures that only authorized personnel can view
+ *   sensitive contact information submitted through the "hire me" button.
+ *
+ * Data Structure:
+ *   The primary data structure is the `contactFormSubmissions` collection, where each document
+ *   represents a single contact form submission.  The document ID serves as the unique identifier
+ *   for each submission.
+ *
+ * Key Security Decisions:
+ *   - Public listing of contact form submissions is strictly prohibited.
+ *   - Only authenticated administrators can create, read, update, or delete submissions.
+ *   - Data validation is relaxed during this prototyping phase, focusing on authorization.
+ *
+ * Authorization Independence:
+ *   Access control is based on Firebase Authentication's admin role. No denormalization is required
+ *   since the rules directly check for admin authentication.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Controls access to the `contactFormSubmissions` collection. Only authenticated administrators can manage submissions.
+     * @path /contactFormSubmissions/{contactFormSubmissionId}
+     * @allow (get, list) If the user is an authenticated administrator.
+     * @allow (create, update, delete) If the user is an authenticated administrator.
+     * @deny (get, list) If the user is not an authenticated administrator.
+     * @deny (create, update, delete) If the user is not an authenticated administrator.
+     * @principle Enforces admin-only access for managing contact form submissions.
+     */
+    match /contactFormSubmissions/{contactFormSubmissionId} {
+      // Helper function to check if the user is signed in.
+      function isSignedIn() {
+        return request.auth != null;
+      }
+
+      // Helper function to check if the user is an admin
+      function isAdmin() {
+        return isSignedIn() && (request.auth.token.admin == true);
+      }
+
+      // Allow admins to read submissions
+      allow get: if isAdmin();
+      allow list: if isAdmin();
+
+      // Allow admins to create submissions
+      allow create: if isAdmin();
+
+      // Allow admins to update submissions
+      allow update: if isAdmin() && resource != null;
+
+      // Allow admins to delete submissions
+      allow delete: if isAdmin() && resource != null;
+    }
+  }
+}
