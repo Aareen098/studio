@@ -4,19 +4,21 @@ import { firebaseConfig } from '@/firebase/config';
 import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage';
 
 // IMPORTANT: DO NOT MODIFY THIS FUNCTION
 export function initializeFirebase() {
-  const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-  return getSdks(app);
+ const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+ return getSdks(app);
 }
 
 export function getSdks(firebaseApp: FirebaseApp) {
-  return {
-    firebaseApp,
-    auth: getAuth(firebaseApp),
-    firestore: getFirestore(firebaseApp)
-  };
+ return {
+   firebaseApp,
+   auth: getAuth(firebaseApp),
+   firestore: getFirestore(firebaseApp),
+   storage: getStorage(firebaseApp)
+ };
 }
 
 export * from './provider';
