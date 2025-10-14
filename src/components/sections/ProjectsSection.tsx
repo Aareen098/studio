@@ -35,14 +35,14 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" ref={ref} className={cn("py-16 sm:py-24 bg-card", inView ? "opacity-100 animate-fade-in-up" : "opacity-0")}>
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Selected Projects
           </h2>
           <p className="mt-4 text-lg text-primary">A glimpse into what I can do.</p>
         </div>
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <Card key={project.title} className="flex flex-col overflow-hidden group h-full">
               {project.image && (
