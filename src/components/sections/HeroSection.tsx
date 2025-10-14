@@ -2,14 +2,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { MoveRight } from "lucide-react";
 
 export function HeroSection() {
-  const headshot = PlaceHolderImages.find(
-    (img) => img.id === "aareen-headshot"
-  );
-
   return (
     <section id="home" className="py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -36,17 +31,15 @@ export function HeroSection() {
             </div>
           </div>
           <div className="flex justify-center">
-            {headshot && (
-              <Image
-                src={headshot.imageUrl}
-                alt={headshot.description}
-                data-ai-hint={headshot.imageHint}
-                width={400}
-                height={400}
-                className="rounded-full aspect-square object-cover border-8 border-primary/10 shadow-2xl"
-                priority
-              />
-            )}
+            <Image
+              src="/aareen-headshot.png"
+              alt="A professional headshot of Aareen."
+              data-ai-hint="professional headshot"
+              width={400}
+              height={400}
+              className="rounded-full aspect-square object-cover border-8 border-primary/10 shadow-2xl"
+              priority
+            />
           </div>
         </div>
       </div>

@@ -1,12 +1,6 @@
 {
   "placeholderImages": [
     {
-      "id": "aareen-headshot",
-      "description": "A professional headshot of Aareen.",
-      "imageUrl": "https://picsum.photos/seed/headshot/400/400",
-      "imageHint": "professional headshot"
-    },
-    {
       "id": "project-1",
       "description": "Abstract visualization of code.",
       "imageUrl": "https://picsum.photos/seed/p1/600/400",
@@ -23,12 +17,6 @@
       "description": "Mockup of a mobile application.",
       "imageUrl": "https://picsum.photos/seed/p3/600/400",
       "imageHint": "mobile app"
-    },
-    {
-      "id": "project-4",
-      "description": "A web application dashboard interface.",
-      "imageUrl": "https://picsum.photos/seed/p4/600/400",
-      "imageHint": "web dashboard"
     }
   ]
 }

@@ -13,17 +13,25 @@ import { Github, ExternalLink } from "lucide-react";
 const projects = [
   {
     title: "Project One",
-    description: "",
+    description: "A deep dive into modern web architecture, this project showcases a robust backend with a sleek, responsive frontend.",
     image: PlaceHolderImages.find((img) => img.id === "project-1"),
-    tags: [],
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     github: "#",
     live: "#",
   },
   {
     title: "Project Two",
-    description: "",
+    description: "An interactive data visualization tool that turns complex datasets into understandable insights. Features real-time updates and a highly configurable interface.",
     image: PlaceHolderImages.find((img) => img.id === "project-2"),
-    tags: [],
+    tags: ["React", "D3.js", "Firebase"],
+    github: "#",
+    live: "#",
+  },
+  {
+    title: "Project Three",
+    description: "A full-featured e-commerce platform with a custom CMS, payment gateway integration, and a user-friendly shopping experience.",
+    image: PlaceHolderImages.find((img) => img.id === "project-3"),
+    tags: ["Node.js", "React", "Stripe"],
     github: "#",
     live: "#",
   },
@@ -41,7 +49,7 @@ export function ProjectsSection() {
           </h2>
           <p className="mt-4 text-lg text-primary">A glimpse into what I can do.</p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <Card key={project.title} className="flex flex-col overflow-hidden group h-full">
               {project.image && (

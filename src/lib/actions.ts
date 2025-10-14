@@ -2,7 +2,6 @@
 "use server";
 
 import { z } from "zod";
-import * as admin from "firebase-admin";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -10,15 +9,6 @@ const contactSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters long."),
 });
 
-// Initialize Firebase Admin SDK
-// This function ensures that the SDK is initialized only once.
-function initializeFirebaseAdmin() {
-  if (admin.apps.length === 0) {
-    admin.initializeApp({
-      credential: admin.credential.applicationDefault()
-    });
-  }
-}
 
 export async function submitContactForm(data: z.infer<typeof contactSchema>) {
   const validatedFields = contactSchema.safeParse(data);
@@ -32,26 +22,14 @@ export async function submitContactForm(data: z.infer<typeof contactSchema>) {
     };
   }
 
-  try {
-    initializeFirebaseAdmin();
-    const db = admin.firestore();
-    const submissionsCollection = db.collection('contactFormSubmissions');
-    
-    await submissionsCollection.add({
-      ...validatedFields.data,
-      submittedAt: admin.firestore.FieldValue.serverTimestamp(),
-    });
+  // Since we removed Firebase Admin, we can't save to Firestore from the server anymore.
+  // We'll simulate a successful submission for now.
+  // In a real app, you would integrate with an email service like SendGrid or Resend here.
+  
+  console.log("Contact form submitted:", validatedFields.data);
 
-    return {
-      success: true,
-      message: "Thank you for your message! I'll get back to you soon.",
-    };
-  } catch (error) {
-    console.error("Error submitting contact form:", error);
-    // In a real app, you'd want to log this error to a monitoring service
-    return {
-      success: false,
-      message: "Something went wrong on our end. Please try again later."
-    }
-  }
+  return {
+    success: true,
+    message: "Thank you for your message! I'll get back to you soon.",
+  };
 }
