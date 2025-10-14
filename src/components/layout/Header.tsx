@@ -45,9 +45,14 @@ export function Header() {
           <span className="font-bold text-lg">Aareen</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
-          <NavLinks />
-        </nav>
+        <div className="hidden md:flex items-center gap-6">
+          <nav className="flex items-center gap-6">
+            <NavLinks />
+          </nav>
+          <Button asChild>
+            <Link href="#contact">Hire Me</Link>
+          </Button>
+        </div>
 
         <Sheet>
           <SheetTrigger asChild>
@@ -57,9 +62,16 @@ export function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-            <nav className="flex flex-col gap-4 mt-8">
-              <NavLinks inSheet />
-            </nav>
+            <div className="flex flex-col h-full">
+              <div className="mt-8 flex-grow">
+                <nav className="flex flex-col gap-4">
+                  <NavLinks inSheet />
+                </nav>
+              </div>
+              <Button asChild className="w-full">
+                <Link href="#contact">Hire Me</Link>
+              </Button>
+            </div>
           </SheetContent>
         </Sheet>
       </div>
