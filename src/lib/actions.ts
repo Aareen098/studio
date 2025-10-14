@@ -2,6 +2,8 @@
 "use server";
 
 import { z } from "zod";
+import { initializeFirebase } from "@/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -21,11 +23,24 @@ export async function submitContactForm(data: z.infer<typeof contactSchema>) {
     };
   }
 
-  // In a real application, you would handle the form submission, e.g., send an email.
-  console.log("New contact form submission:", validatedFields.data);
+  try {
+    const { firestore } = initializeFirebase();
+    const submissionsCollection = collection(firestore, 'contactFormSubmissions');
+    
+    await addDoc(submissionsCollection, {
+      ...validatedFields.data,
+      submittedAt: serverTimestamp(),
+    });
 
-  return {
-    success: true,
-    message: "Thank you for your message! I'll get back to you soon.",
-  };
+    return {
+      success: true,
+      message: "Thank you for your message! I'll get back to you soon.",
+    };
+  } catch (error) {
+    console.error("Error submitting contact form:", error);
+    return {
+      success: false,
+      message: "Something went wrong. Please try again later."
+    }
+  }
 }
