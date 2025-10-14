@@ -2,7 +2,7 @@
 "use server";
 
 import { z } from "zod";
-import { initializeApp, getApps } from 'firebase/app';
+import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { firebaseConfig } from "@/firebase/config";
 
@@ -12,17 +12,14 @@ const contactSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters long."),
 });
 
-// A function to initialize Firebase client SDK on the server if not already done.
-function initializeFirebaseSDK() {
-  if (!getApps().length) {
-    try {
-      return initializeApp(firebaseConfig);
-    } catch (error: any) {
-      console.error('Firebase client SDK initialization error on server:', error.message);
-    }
-  }
-  return getApps()[0];
+let app: FirebaseApp;
+if (!getApps().length) {
+  app = initializeApp(firebaseConfig);
+} else {
+  app = getApp();
 }
+const db = getFirestore(app);
+
 
 export async function submitContactForm(data: z.infer<typeof contactSchema>) {
   const validatedFields = contactSchema.safeParse(data);
@@ -37,11 +34,6 @@ export async function submitContactForm(data: z.infer<typeof contactSchema>) {
   }
 
   try {
-    const app = initializeFirebaseSDK();
-    if (!app) {
-        throw new Error("Firebase initialization failed on the server.");
-    }
-    const db = getFirestore(app);
     const submissionsCollection = collection(db, 'contactFormSubmissions');
     
     await addDoc(submissionsCollection, {
