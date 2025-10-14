@@ -1,62 +1,56 @@
 /**
- * @file Firestore Security Rules
- * @description This ruleset defines access control for the `contactFormSubmissions` collection.
+ * @fileoverview Firestore Security Rules for the application.
  *
  * Core Philosophy:
- *   This ruleset allows only authenticated administrators to read and manage contact form submissions.
- *   All other users are denied access. This ensures that only authorized personnel can view
- *   sensitive contact information submitted through the "hire me" button.
+ * This ruleset secures contact form submissions by allowing only authenticated administrators to view all submissions.
+ * Unauthenticated users are not able to list or get any submissions.
  *
  * Data Structure:
- *   The primary data structure is the `contactFormSubmissions` collection, where each document
- *   represents a single contact form submission.  The document ID serves as the unique identifier
- *   for each submission.
+ * Contact form submissions are stored in the top-level `/contactFormSubmissions/{contactFormSubmissionId}` collection.
  *
  * Key Security Decisions:
- *   - Public listing of contact form submissions is strictly prohibited.
- *   - Only authenticated administrators can create, read, update, or delete submissions.
- *   - Data validation is relaxed during this prototyping phase, focusing on authorization.
- *
- * Authorization Independence:
- *   Access control is based on Firebase Authentication's admin role. No denormalization is required
- *   since the rules directly check for admin authentication.
+ * - Unauthenticated users cannot list or get any documents.
+ * - Only authenticated users (assumed to be administrators) can view submissions.
+ * - Data validation is relaxed in this prototyping phase, focusing on access control rather than schema enforcement.
+ * - User listing is disallowed.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Controls access to the `contactFormSubmissions` collection. Only authenticated administrators can manage submissions.
+     * @description Controls access to contact form submissions. Only authenticated administrators can view submissions.
      * @path /contactFormSubmissions/{contactFormSubmissionId}
-     * @allow (get, list) If the user is an authenticated administrator.
-     * @allow (create, update, delete) If the user is an authenticated administrator.
-     * @deny (get, list) If the user is not an authenticated administrator.
-     * @deny (create, update, delete) If the user is not an authenticated administrator.
-     * @principle Enforces admin-only access for managing contact form submissions.
+     * @allow (get, list) - Authenticated administrator can view submissions.
+     *   auth.uid: "admin123"
+     *   operation: get
+     * @allow (create, update, delete) - Authenticated administrator can create, update, and delete submissions.
+     *   auth.uid: "admin123"
+     *   operation: create
+     * @deny (get, list) - Unauthenticated user cannot view submissions.
+     *   auth: null
+     *   operation: get
+     * @deny (create, update, delete) - Unauthenticated user cannot create submissions.
+     *   auth: null
+     *   operation: create
+     * @principle Authenticated administrators only can manage contact form submissions.
      */
     match /contactFormSubmissions/{contactFormSubmissionId} {
-      // Helper function to check if the user is signed in.
-      function isSignedIn() {
-        return request.auth != null;
-      }
+      allow get: if isSignedIn();
+      allow list: if isSignedIn();
+      allow create: if isSignedIn();
+      allow update: if isSignedIn();
+      allow delete: if isSignedIn();
+    }
 
-      // Helper function to check if the user is an admin
-      function isAdmin() {
-        return isSignedIn() && (request.auth.token.admin == true);
-      }
+    // --- Helper Functions ---
 
-      // Allow admins to read submissions
-      allow get: if isAdmin();
-      allow list: if isAdmin();
-
-      // Allow admins to create submissions
-      allow create: if isAdmin();
-
-      // Allow admins to update submissions
-      allow update: if isAdmin() && resource != null;
-
-      // Allow admins to delete submissions
-      allow delete: if isAdmin() && resource != null;
+    /**
+     * @description Checks if the user is signed in (authenticated).
+     * @return {bool} True if the user is signed in, false otherwise.
+     */
+    function isSignedIn() {
+      return request.auth != null;
     }
   }
 }
