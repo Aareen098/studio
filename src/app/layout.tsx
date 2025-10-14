@@ -22,10 +22,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className={cn("font-body antialiased", "opacity-0 animate-fade-in-up")} style={{animationFillMode: 'forwards'}}>
-        <FirebaseClientProvider>
           {children}
-        </FirebaseClientProvider>
-        <Toaster />
       </body>
     </html>
   );
