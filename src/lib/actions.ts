@@ -10,19 +10,20 @@ const contactSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters long."),
 });
 
-// Initialize Firebase Admin SDK
-// This ensures we only initialize the app once
-if (!admin.apps.length) {
-  try {
-    admin.initializeApp({
-      credential: admin.credential.applicationDefault(),
-    });
-  } catch (error) {
-    console.error('Firebase admin initialization error:', error);
+// A function to initialize Firebase Admin SDK if not already done.
+function initializeFirebaseAdmin() {
+  if (!admin.apps.length) {
+    try {
+      admin.initializeApp({
+        credential: admin.credential.applicationDefault(),
+      });
+    } catch (error) {
+      console.error('Firebase admin initialization error:', error);
+      throw new Error("Failed to initialize Firebase Admin. See server logs for details.");
+    }
   }
+  return admin.firestore();
 }
-
-const db = admin.firestore();
 
 export async function submitContactForm(data: z.infer<typeof contactSchema>) {
   const validatedFields = contactSchema.safeParse(data);
@@ -37,6 +38,8 @@ export async function submitContactForm(data: z.infer<typeof contactSchema>) {
   }
 
   try {
+    // Ensure Firebase is initialized and get the Firestore instance.
+    const db = initializeFirebaseAdmin();
     const submissionsCollection = db.collection('contactFormSubmissions');
     
     await submissionsCollection.add({
@@ -50,9 +53,10 @@ export async function submitContactForm(data: z.infer<typeof contactSchema>) {
     };
   } catch (error) {
     console.error("Error submitting contact form:", error);
+    // In a real app, you'd want to log this error to a monitoring service
     return {
       success: false,
-      message: "Something went wrong. Please try again later."
+      message: "Something went wrong on our end. Please try again later."
     }
   }
 }
