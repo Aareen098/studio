@@ -58,7 +58,7 @@ export function ProjectsSection() {
           </h2>
           <p className="mt-4 text-lg text-primary">A glimpse into what I can do.</p>
         </div>
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {projects.map((project) => (
             <Card key={project.title} className="flex flex-col overflow-hidden group">
               {project.image && (
