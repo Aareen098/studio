@@ -2,14 +2,27 @@
 "use server";
 
 import { z } from "zod";
-import { initializeFirebase } from "@/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import * as admin from 'firebase-admin';
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.string().email("Invalid email address."),
   message: z.string().min(10, "Message must be at least 10 characters long."),
 });
+
+// Initialize Firebase Admin SDK
+// This ensures we only initialize the app once
+if (!admin.apps.length) {
+  try {
+    admin.initializeApp({
+      credential: admin.credential.applicationDefault(),
+    });
+  } catch (error) {
+    console.error('Firebase admin initialization error:', error);
+  }
+}
+
+const db = admin.firestore();
 
 export async function submitContactForm(data: z.infer<typeof contactSchema>) {
   const validatedFields = contactSchema.safeParse(data);
@@ -19,17 +32,16 @@ export async function submitContactForm(data: z.infer<typeof contactSchema>) {
       success: false,
       message:
         "There was an error with your submission: " +
-        validatedFields.error.flatten().fieldErrors,
+        JSON.stringify(validatedFields.error.flatten().fieldErrors),
     };
   }
 
   try {
-    const { firestore } = initializeFirebase();
-    const submissionsCollection = collection(firestore, 'contactFormSubmissions');
+    const submissionsCollection = db.collection('contactFormSubmissions');
     
-    await addDoc(submissionsCollection, {
+    await submissionsCollection.add({
       ...validatedFields.data,
-      submittedAt: serverTimestamp(),
+      submittedAt: admin.firestore.FieldValue.serverTimestamp(),
     });
 
     return {
