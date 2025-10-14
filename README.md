@@ -8,7 +8,7 @@ This portfolio showcases Aareen's projects, skills, and provides a way for visit
 
 ## Live Demo
 
-You can view the live deployment here: [https://studio-aareens-projects.vercel.app](https://studio-chi-nine-95.vercel.app/)
+You can view the live deployment here: [https://studio-7mspdoepk-aareens-projects.vercel.app](https://studio-7mspdoepk-aareens-projects.vercel.app)
 
 ## Getting Started
 
