@@ -3,7 +3,7 @@
 
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import {
   GitBranch,
   Figma,
@@ -262,8 +262,8 @@ function SkillCard({
 }) {
   return (
     <Card className="flex flex-col items-center justify-center gap-4 p-4 bg-card/50 hover:bg-card transition-colors duration-300 transform hover:-translate-y-1 aspect-square">
-      <Icon className="h-12 w-12 text-primary" />
-      <p className="text-sm font-medium text-center text-foreground">{name}</p>
+      <Icon className="h-16 w-16 text-primary" />
+      <p className="text-base font-medium text-center text-foreground">{name}</p>
     </Card>
   );
 }
