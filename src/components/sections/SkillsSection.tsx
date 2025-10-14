@@ -9,55 +9,28 @@ const skills = [
   {
     name: "JavaScript",
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="#F7DF1E"
-        className="h-16 w-16"
-      >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
-        <path d="M13.5 16.5h-3L11 20l4.5-3.5h-2zm-3-9L9 12l1.5 1.5h3L15 12l-1.5-4.5h-3z" fill="#000"/>
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#F7DF1E" className="h-16 w-16">
+        <path d="M0 0h24v24H0V0zm22.034 18.276h-2.436V10.998H17.43v7.278h-2.394V8.724h7v9.552zm-4.74-6.39h-2.394v2.436h2.394v-2.436zm-2.394 4.026V13.5h2.394v2.412h-2.394zM8.766 18.276V8.724h2.394l2.436 3.06 2.436-3.06h2.394v9.552H16.05v-4.8l-2.436 3.06-2.436-3.06v4.8H8.766zM0 18.276h7.182V8.724H0v9.552zm4.788-2.412H2.394v-4.788h2.394v4.788z"/>
       </svg>
     ),
   },
   {
     name: "TypeScript",
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="#3178C6"
-        className="h-16 w-16"
-      >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
-        <path
-          fill="#fff"
-          d="M14.2 13.4h-4.4V12h4.4v1.4zm0-3.3h-4.4v1.4h4.4V10.1z"
-        />
-        <path
-          fill="#fff"
-          d="M13.8 15.6h-3.6l-.3-1.1H8.7l-.3 1.1H6.8l3.1-8.3h1.2l3.1 8.3h-1.6zm-1.8-2.2l-1-3.3-1 3.3h2z"
-        />
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#3178C6" className="h-16 w-16">
+        <path d="M1.5 1.5v21h21v-21h-21zM21 21H3V3h18v18zM11.535 15.33V9.225h1.95v2.91h2.1v-2.91h1.95v6.105h-1.95v-2.88h-2.1v2.88h-1.95zM9.69 9.225h-4.26v1.59h2.55v1.2H5.43v1.59h2.55v1.725H9.69V9.225z"/>
       </svg>
     ),
   },
   {
     name: "React",
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="#61DAFB"
-        className="h-16 w-16"
-      >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <circle cx="12" cy="12" r="2" fill="#000"/>
-        <g>
-            <ellipse cx="12" cy="12" rx="11" ry="4.2" stroke="#61DAFB" strokeWidth="1" fill="none" />
-            <ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)" stroke="#61DAFB" strokeWidth="1" fill="none" />
-            <ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)" stroke="#61DAFB" strokeWidth="1" fill="none" />
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#61DAFB" className="h-16 w-16">
+        <circle cx="12" cy="12" r="2.05"/>
+        <g stroke="#61DAFB" strokeWidth="1" fill="none">
+            <ellipse rx="11" ry="4.2"/>
+            <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+            <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
         </g>
       </svg>
     ),
@@ -65,127 +38,80 @@ const skills = [
   {
     name: "Next.js",
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        className="h-16 w-16"
-      >
-        <circle cx="12" cy="12" r="10" fill="white" />
-        <path fill="black" d="M15.3 16.7L9.8 8.4h-.1v8.3H8.4V7.3h1.3l5.5 8.3h.1V7.3h1.3v9.4z" />
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000" className="h-16 w-16">
+         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.12 15.12h-1.34V9.62h1.34v7.5zm3.84-7.5h-1.5l-2.34 3.34V9.62h-1.34v7.5h1.34l2.5-3.56v3.56h1.34v-7.5z" fill="#fff"/>
+         <path d="M15.72 9.62v7.5h1.34v-7.5zM9.88 9.62v7.5H8.54v-7.5z" fill="#000"/>
+         <path d="M14.22 13.18l2.5 3.56h1.34v-7.5h-1.34v3.94l-2.34-3.32h-1.5v7.5h1.34z" fill="#fff"/>
       </svg>
     ),
   },
   {
     name: "Node.js",
     icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#8CC84B" className="h-16 w-16">
-            <path d="M11.75 1.25a.75.75 0 00-.75.75v.51c-4.33.34-7.75 3.99-7.75 8.49 0 4.31 3.19 7.9 7.25 8.44v.56a.75.75 0 001.5 0v-.56c4.06-.54 7.25-4.13 7.25-8.44 0-4.5-3.42-8.15-7.75-8.49V2a.75.75 0 00-.75-.75zm-5.5 9.25a.75.75 0 01.75-.75h2.5a.75.75 0 01.75.75v3a.75.75 0 01-1.5 0v-2.25h-1v2.25a.75.75 0 01-1.5 0v-3zm9.5-1.5a.75.75 0 00-1.5 0v3a.75.75 0 001.5 0v-3z"/>
-        </svg>
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#339933" className="h-16 w-16">
+        <path d="M11.99 24C5.382 24 0 18.618 0 12S5.382 0 11.99 0C18.618 0 24 5.382 24 12s-5.382 12-12.01 12zM11.33 2.195c-5.26.47-9.405 4.885-9.405 10.18 0 5.66 4.6 10.275 10.26 10.275 5.52 0 10.02-4.29 10.245-9.765-.645.405-1.425.66-2.28.66-1.89 0-3.435-1.545-3.435-3.435 0-1.275.69-2.385 1.725-2.985A10.23 2.97 11.33 2.195z"/>
+      </svg>
     ),
   },
   {
     name: "Python",
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        className="h-16 w-16"
-      >
-        <path fill="#3776AB" d="M12,2A10,10,0,0,0,2,12a10,10,0,0,0,10,10a10,10,0,0,0,10-10A10,10,0,0,0,12,2Zm-1,14H8V12h3a2,2,0,0,0,2-2V8a2,2,0,0,0-2-2H8V4h4a4,4,0,0,1,4,4v2a4,4,0,0,1-4,4Z"/>
-        <path fill="#FFD43B" d="M12,22a10,10,0,0,0,10-10A10,10,0,0,0,12,2a10,10,0,0,0-10,10,10,10,0,0,0,10,10Zm1-14h4v4h-3a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h3v2h-4a4,4,0,0,1-4-4V10a4,4,0,0,1,4-4Z"/>
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="h-16 w-16">
+        <path d="M12 2.382c-4.94 0-8.52 3.582-8.52 8.52v.706h4.26c.94 0 1.612-1.282 1.612-2.122 0-1.178-1.06-1.768-2.122-1.768V5.43c2.436-1.178 5.148-.236 5.148 2.6v3.294h5.66V8.52C17.92 4.86 15.28 2.382 12 2.382z" fill="#3776AB"/>
+        <path d="M12 21.618c4.94 0 8.52-3.582 8.52-8.52v-.706h-4.26c-.94 0-1.612 1.282-1.612 2.122 0 1.178 1.06 1.768 2.122 1.768v2.292c-2.436 1.178-5.148.236-5.148-2.6v-3.294H5.66v2.824c0 3.66 2.64 6.238 5.86 6.238h.48z" fill="#FFD43B"/>
       </svg>
     ),
   },
   {
     name: "C++",
     icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-16 w-16">
-            <path fill="#00599C" d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
-            <path fill="white" d="M12.5 6.4C9.5 6.4 7 8.9 7 12s2.5 5.6 5.5 5.6c1.2 0 2.4-.4 3.3-1.1l-1-1.8c-.7.5-1.5.8-2.3.8-1.9 0-3.5-1.6-3.5-3.5s1.6-3.5 3.5-3.5c1.1 0 2.1.5 2.8 1.3l1-1.8c-.9-.8-2-1.3-3.3-1.3z"/>
-            <path fill="white" d="M18 10.5h2v2h-2zm3 0h2v2h-2zM18 13.5h2v-2h-2zm0-5h2v-2h-2z"/>
+        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#00599C" className="h-16 w-16">
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zM12.5 6.4C9.5 6.4 7 8.9 7 12s2.5 5.6 5.5 5.6c1.2 0 2.4-.4 3.3-1.1l-1-1.8c-.7.5-1.5.8-2.3.8-1.9 0-3.5-1.6-3.5-3.5s1.6-3.5 3.5-3.5c1.1 0 2.1.5 2.8 1.3l1-1.8c-.9-.8-2-1.3-3.3-1.3z" fill="#fff"/>
+            <path d="M17.5 10h1.5v1.5h-1.5zm2.5 0h1.5v1.5h-1.5zM17.5 12.5h1.5v-1.5h-1.5zm-2.5-4h1.5v-1.5h-1.5z" fill="#fff"/>
         </svg>
     ),
   },
   {
     name: "HTML5",
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="#E34F26"
-        className="h-16 w-16"
-      >
-        <path d="M2 21.3l1.8-20.7h16.4L18.2 21.3 12 23l-7.8-1.7z" />
-        <path fill="#F16529" d="M12 4.2v17.2l6.2-1.6L19.8 4.2z" />
-        <path
-          fill="#EBEBEB"
-          d="M12 10.2H9.2l-.2-2.3H12v2.3zm0 4.6H9.4l-.3-3.3h2.9v3.3zM12 9.1V6.8h5.3l-.1 1.2-.3 1.1z"
-        />
-        <path
-          fill="#fff"
-          d="M12 14.8v2.3l2.9.8.3-3.1h-3.2zm0-5.7v2.3h4.9l.1-1.1.1-1.2z"
-        />
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#E34F26" className="h-16 w-16">
+        <path d="m1.8 21.2 1.8-20.6h16.8l-1.8 20.6-6.6 1.8zM12 4.2v17.2l6.2-1.7L19.8 4.2H12zm-2.8 5.9h2.8v2.3H8.9l.2-2.3zm0 4.6h2.8v2.3H9.2l.2-2.3zm.4-7.9h5.5l-.3 3.4h-5.2V6.8z"/>
       </svg>
     ),
   },
   {
     name: "CSS3",
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="#1572B6"
-        className="h-16 w-16"
-      >
-        <path d="M2 21.3l1.8-20.7h16.4L18.2 21.3 12 23l-7.8-1.7z" />
-        <path fill="#33A9DC" d="M12 4.2v17.2l6.2-1.6L19.8 4.2z" />
-        <path
-          fill="#fff"
-          d="M12 10.2H9.2l-.2-2.3H12v2.3zm0 4.6H9.4l-.3-3.3h2.9v3.3z"
-        />
-        <path
-          fill="#EBEBEB"
-          d="M12 9.1V6.8h5.3l-.1 1.2-.3 1.1zm0 7.9l2.9-.8.3-3.1h-3.2v-2.3h4.9l-.1 1.2-.5 4.9z"
-        />
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#1572B6" className="h-16 w-16">
+        <path d="m1.8 21.2 1.8-20.6h16.8l-1.8 20.6-6.6 1.8zM12 4.2v17.2l6.2-1.7L19.8 4.2H12zM8.9 9.1h3.1v2.3H9.2l-.3-2.3zm.2 4.6h3.1v2.3H9.4l-.3-2.3z"/>
       </svg>
     ),
   },
   {
     name: "Tailwind CSS",
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#06B6D4" className="h-16 w-16">
-        <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-3.5 9.25c0-1.03 1.12-1.75 2.5-1.75s2.5.72 2.5 1.75v.75c0 1.03-1.12 1.75-2.5 1.75s-2.5-.72-2.5-1.75v-.75zm7 0c0-1.03 1.12-1.75 2.5-1.75s2.5.72 2.5 1.75v.75c0 1.03-1.12 1.75-2.5 1.75s-2.5-.72-2.5-1.75v-.75z"/>
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#06B6D4" className="h-16 w-16">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-4-9.5c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm8 0c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z"/>
       </svg>
     ),
   },
   {
     name: "Docker",
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="#2496ED"
-        className="h-16 w-16"
-      >
-        <path d="M21.7 8.3s-1.8-1.7-4.2-1.7H4.2C2.5 6.6 2 7.8 2 7.8v7.6c0 .8.6 1.4 1.4 1.4h17.2c.8 0 1.4-.6 1.4-1.4V8.3zM7 12H5v-2h2v2zm4 0H9v-2h2v2zm4 0h-2v-2h2v2z" />
-        <path d="M4.6 5.2a.4.4 0 00-.4.4v.4h15.6v-.4a.4.4 0 00-.4-.4H4.6z" />
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#2496ED" className="h-16 w-16">
+        <path d="M21.728 8.204s-1.8-1.746-4.2-1.746H4.214C2.514 6.458 2 7.662 2 7.662v7.622c0 .8.6 1.442 1.4 1.442h17.228c.798 0 1.4-.64 1.4-1.442V8.204zM6.957 11.95H5.043v-1.914h1.914v1.914zm3.828 0H8.87V10.036h1.914v1.914zm3.828 0h-1.914V10.036h1.914v1.914zM4.628 5.162a.4.4 0 00-.4.4v.4h15.572v-.4a.4.4 0 00-.4-.4H4.628z"/>
       </svg>
     ),
   },
   {
     name: "Figma",
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        className="h-16 w-16"
-      >
-        <path fill="#F24E1E" d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
-        <path fill="#FF7262" d="M12 2a10 10 0 00-7.07 17.07A10 10 0 0012 22z"/>
-        <path fill="#A259FF" d="M12 2a10 10 0 000 20v-2a8 8 0 010-16V2z"/>
-        <path fill="#1ABCFE" d="M12 12a2 2 0 11-4 0 2 2 0 014 0z"/>
-        <path fill="#0ACF83" d="M12 12a2 2 0 100-4 2 2 0 000 4z" transform="rotate(90 12 12)"/>
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="h-16 w-16">
+        <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" fill="#F24E1E"/>
+        <path d="M12 2a10 10 0 00-7.07 17.07A10 10 0 0012 22z" fill="#FF7262"/>
+        <path d="M12 2a10 10 0 000 20v-2a8 8 0 010-16V2z" fill="#A259FF"/>
+        <path d="M12 12a2 2 0 11-4 0 2 2 0 014 0z" fill="#1ABCFE"/>
+        <path d="M12 12a2 2 0 100-4 2 2 0 000 4z" transform="rotate(90 12 12)" fill="#0ACF83"/>
       </svg>
     ),
   },
