@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -35,7 +34,7 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" ref={ref} className={cn("py-16 sm:py-24 bg-card", inView ? "opacity-100 animate-fade-in-up" : "opacity-0")}>
-      <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Selected Projects
