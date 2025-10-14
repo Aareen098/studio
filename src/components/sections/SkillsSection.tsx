@@ -11,9 +11,8 @@ import {
   DiNodejsSmall,
   DiHtml5,
   DiCss3,
-  DiDocker,
 } from "react-icons/di";
-import { SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, SiFigma, SiCplusplus } from "react-icons/si";
+import { SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, SiCplusplus } from "react-icons/si";
 
 const skills = [
   {
@@ -56,14 +55,6 @@ const skills = [
     name: "Tailwind CSS",
     icon: <SiTailwindcss size="4em" className="text-[#06B6D4]" />,
   },
-  {
-    name: "Docker",
-    icon: <DiDocker size="4em" className="text-[#2496ED]" />,
-  },
-  {
-    name: "Figma",
-    icon: <SiFigma size="4em" className="text-foreground" />,
-  },
 ];
 
 export function SkillsSection() {
@@ -87,7 +78,7 @@ export function SkillsSection() {
             My toolbox for building digital solutions.
           </p>
         </div>
-        <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {skills.map((skill) => (
             <SkillCard key={skill.name} icon={skill.icon} name={skill.name} />
           ))}
