@@ -17,22 +17,26 @@ import {
   Component,
   Server,
   PenTool,
+  Terminal,
+  FileCode,
+  Box,
+  ServerCog,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import React from "react";
 
 const skills: { icon: LucideIcon; name: string }[] = [
-  { icon: Code, name: "JavaScript" },
-  { icon: Code, name: "TypeScript" },
+  { icon: FileCode, name: "JavaScript" },
+  { icon: FileCode, name: "TypeScript" },
   { icon: Component, name: "React" },
-  { icon: Server, name: "Next.js" },
+  { icon: ServerCog, name: "Next.js" },
   { icon: Server, name: "Node.js" },
   { icon: Code, name: "Python" },
-  { icon: Cpu, name: "C++" },
+  { icon: Terminal, name: "C++" },
   { icon: Globe, name: "HTML5" },
   { icon: PenTool, name: "CSS3" },
   { icon: Wind, name: "Tailwind CSS" },
-  { icon: Bot, name: "Docker" },
+  { icon: Box, name: "Docker" },
   { icon: Figma, name: "Figma" },
 ];
 
