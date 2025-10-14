@@ -13,34 +13,18 @@ import { Github, ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    title: "QuantumLeap CRM",
-    description: "A comprehensive CRM platform designed for startups, featuring contact management, sales tracking, and automated workflows.",
-    image: PlaceHolderImages.find((img) => img.id === "project-2"),
-    tags: ["Next.js", "Tailwind CSS", "PostgreSQL", "Prisma"],
-    github: "#",
-    live: "#",
-  },
-  {
-    title: "Insightful Analytics",
-    description: "A data analytics dashboard that provides real-time insights and visualizations for business intelligence.",
-    image: PlaceHolderImages.find((img) => img.id === "project-4"),
-    tags: ["React", "D3.js", "Node.js", "Express"],
-    github: "#",
-    live: "#",
-  },
-  {
-    title: "ConnectSphere",
-    description: "A social networking mobile app focused on professional development and skill sharing.",
-    image: PlaceHolderImages.find((img) => img.id === "project-3"),
-    tags: ["React Native", "Firebase", "Redux"],
-    github: "#",
-    live: "#",
-  },
-  {
-    title: "AbstractFlow",
-    description: "An AI-powered content generation tool for creative writers and marketing teams.",
+    title: "Project One",
+    description: "",
     image: PlaceHolderImages.find((img) => img.id === "project-1"),
-    tags: ["Vue.js", "Genkit", "Python", "FastAPI"],
+    tags: [],
+    github: "#",
+    live: "#",
+  },
+  {
+    title: "Project Two",
+    description: "",
+    image: PlaceHolderImages.find((img) => img.id === "project-2"),
+    tags: [],
     github: "#",
     live: "#",
   },
@@ -58,7 +42,7 @@ export function ProjectsSection() {
           </h2>
           <p className="mt-4 text-lg text-primary">A glimpse into what I can do.</p>
         </div>
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2">
           {projects.map((project) => (
             <Card key={project.title} className="flex flex-col overflow-hidden group h-full">
               {project.image && (
