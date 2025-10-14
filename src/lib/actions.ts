@@ -14,12 +14,13 @@ const contactSchema = z.object({
 function initializeFirebaseAdmin() {
   if (!admin.apps.length) {
     try {
+      // Use applicationDefault for server environments like Vercel
       admin.initializeApp({
         credential: admin.credential.applicationDefault(),
       });
-    } catch (error) {
-      console.error('Firebase admin initialization error:', error);
-      throw new Error("Failed to initialize Firebase Admin. See server logs for details.");
+    } catch (error: any) {
+      console.error('Firebase admin initialization error:', error.message);
+      // Avoid throwing to prevent app crashes, but log the failure.
     }
   }
   return admin.firestore();
