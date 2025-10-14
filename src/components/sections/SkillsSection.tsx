@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useInView } from "@/hooks/use-in-view";
@@ -13,12 +12,12 @@ const skills = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill="currentColor"
+        fill="#F7DF1E"
         className="h-16 w-16"
       >
         <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" fill="#f7df1e" />
-        <path d="M13.5 16.5h-3L11 20l4.5-3.5h-2zm-3-9L9 12l1.5 1.5h3L15 12l-1.5-4.5h-3z" />
+        <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        <path d="M13.5 16.5h-3L11 20l4.5-3.5h-2zm-3-9L9 12l1.5 1.5h3L15 12l-1.5-4.5h-3z" fill="#000"/>
       </svg>
     ),
   },
@@ -28,11 +27,11 @@ const skills = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill="currentColor"
+        fill="#3178C6"
         className="h-16 w-16"
       >
         <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" fill="#3178c6" />
+        <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
         <path
           fill="#fff"
           d="M14.2 13.4h-4.4V12h4.4v1.4zm0-3.3h-4.4v1.4h4.4V10.1z"
@@ -50,14 +49,16 @@ const skills = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill="currentColor"
-        className="h-16 w-16 text-[#61DAFB]"
+        fill="#61DAFB"
+        className="h-16 w-16"
       >
         <path d="M0 0h24v24H0z" fill="none" />
-        <circle cx="12" cy="12" r="2" />
-        <path d="M12 2a10 10 0 00-7.53 16.59l.94-.34a8.5 8.5 0 110-8.5l-.94-.34A10 10 0 0012 2z" />
-        <path d="M4.47 19.53a10 10 0 0015.06-15.06L19.19 4.8a8.5 8.5 0 11-14.38 14.38l-.34.35z" />
-        <path d="M19.53 19.53a10 10 0 00-15.06-15.06l.34-.35a8.5 8.5 0 1114.38 14.38l-.34.35z" />
+        <circle cx="12" cy="12" r="2" fill="#000"/>
+        <g>
+            <ellipse cx="12" cy="12" rx="11" ry="4.2" stroke="#61DAFB" strokeWidth="1" fill="none" />
+            <ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)" stroke="#61DAFB" strokeWidth="1" fill="none" />
+            <ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)" stroke="#61DAFB" strokeWidth="1" fill="none" />
+        </g>
       </svg>
     ),
   },
@@ -70,27 +71,17 @@ const skills = [
         fill="currentColor"
         className="h-16 w-16"
       >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <circle cx="12" cy="12" r="10" />
-        <path
-          fill="#fff"
-          d="M15.3 16.7L9.8 8.4h-.1v8.3H8.4V7.3h1.3l5.5 8.3h.1V7.3h1.3v9.4z"
-        />
+        <circle cx="12" cy="12" r="10" fill="white" />
+        <path fill="black" d="M15.3 16.7L9.8 8.4h-.1v8.3H8.4V7.3h1.3l5.5 8.3h.1V7.3h1.3v9.4z" />
       </svg>
     ),
   },
   {
     name: "Node.js",
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        className="h-16 w-16 text-[#339933]"
-      >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 2l-10 6v12l10 6 10-6V8l-10-6zm-1.1 16.8l-5.4-3.1V9.7l5.4 3.1v6zm.1-7.6L6.5 8.1l5.4-3.1 5.4 3.1-4.5 2.6zm2 7.6v-6l5.4-3.1v6.2l-5.4 3.1z" />
-      </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#8CC84B" className="h-16 w-16">
+            <path d="M11.75 1.25a.75.75 0 00-.75.75v.51c-4.33.34-7.75 3.99-7.75 8.49 0 4.31 3.19 7.9 7.25 8.44v.56a.75.75 0 001.5 0v-.56c4.06-.54 7.25-4.13 7.25-8.44 0-4.5-3.42-8.15-7.75-8.49V2a.75.75 0 00-.75-.75zm-5.5 9.25a.75.75 0 01.75-.75h2.5a.75.75 0 01.75.75v3a.75.75 0 01-1.5 0v-2.25h-1v2.25a.75.75 0 01-1.5 0v-3zm9.5-1.5a.75.75 0 00-1.5 0v3a.75.75 0 001.5 0v-3z"/>
+        </svg>
     ),
   },
   {
@@ -101,30 +92,19 @@ const skills = [
         viewBox="0 0 24 24"
         className="h-16 w-16"
       >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path fill="#3776AB" d="M12 2A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2zm-1 14H8v-4h3a2 2 0 002-2V8a2 2 0 00-2-2H8V4h4a4 4 0 014 4v2a4 4 0 01-4 4z"/>
-        <path fill="#FFD43B" d="M12 22a10 10 0 0010-10A10 10 0 0012 2a10 10 0 00-10 10 10 10 0 0010 10zm1-14h4v4h-3a2 2 0 00-2 2v2a2 2 0 002 2h3v2h-4a4 4 0 01-4-4v-2a4 4 0 014-4z" />
+        <path fill="#3776AB" d="M12,2A10,10,0,0,0,2,12a10,10,0,0,0,10,10a10,10,0,0,0,10-10A10,10,0,0,0,12,2Zm-1,14H8V12h3a2,2,0,0,0,2-2V8a2,2,0,0,0-2-2H8V4h4a4,4,0,0,1,4,4v2a4,4,0,0,1-4,4Z"/>
+        <path fill="#FFD43B" d="M12,22a10,10,0,0,0,10-10A10,10,0,0,0,12,2a10,10,0,0,0-10,10,10,10,0,0,0,10,10Zm1-14h4v4h-3a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2h3v2h-4a4,4,0,0,1-4-4V10a4,4,0,0,1,4-4Z"/>
       </svg>
     ),
   },
   {
     name: "C++",
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        className="h-16 w-16 text-[#00599C]"
-      >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" fill="#004482" />
-        <path
-          fill="#fff"
-          d="M12 6.5c-3 0-5.5 2.5-5.5 5.5s2.5 5.5 5.5 5.5c1.2 0 2.3-.4 3.2-1.1l-1-1.7a3.5 3.5 0 01-2.2.8c-1.9 0-3.5-1.6-3.5-3.5S10.1 8.5 12 8.5c1.1 0 2.1.5 2.8 1.4l1-1.7C14.3 6.9 13.2 6.5 12 6.5z"
-        />
-        <path fill="#fff" d="M17 11h-2v2h2v-2zm3 0h-2v2h2v-2z" />
-        <path fill="#fff" d="M18 10h2V8h-2v2zm0 5h2v-2h-2v2z" />
-      </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-16 w-16">
+            <path fill="#00599C" d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
+            <path fill="white" d="M12.5 6.4C9.5 6.4 7 8.9 7 12s2.5 5.6 5.5 5.6c1.2 0 2.4-.4 3.3-1.1l-1-1.8c-.7.5-1.5.8-2.3.8-1.9 0-3.5-1.6-3.5-3.5s1.6-3.5 3.5-3.5c1.1 0 2.1.5 2.8 1.3l1-1.8c-.9-.8-2-1.3-3.3-1.3z"/>
+            <path fill="white" d="M18 10.5h2v2h-2zm3 0h2v2h-2zM18 13.5h2v-2h-2zm0-5h2v-2h-2z"/>
+        </svg>
     ),
   },
   {
@@ -133,10 +113,9 @@ const skills = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill="currentColor"
-        className="h-16 w-16 text-[#E34F26]"
+        fill="#E34F26"
+        className="h-16 w-16"
       >
-        <path d="M0 0h24v24H0z" fill="none" />
         <path d="M2 21.3l1.8-20.7h16.4L18.2 21.3 12 23l-7.8-1.7z" />
         <path fill="#F16529" d="M12 4.2v17.2l6.2-1.6L19.8 4.2z" />
         <path
@@ -156,10 +135,9 @@ const skills = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill="currentColor"
-        className="h-16 w-16 text-[#1572B6]"
+        fill="#1572B6"
+        className="h-16 w-16"
       >
-        <path d="M0 0h24v24H0z" fill="none" />
         <path d="M2 21.3l1.8-20.7h16.4L18.2 21.3 12 23l-7.8-1.7z" />
         <path fill="#33A9DC" d="M12 4.2v17.2l6.2-1.6L19.8 4.2z" />
         <path
@@ -176,14 +154,8 @@ const skills = [
   {
     name: "Tailwind CSS",
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        className="h-16 w-16 text-[#06B6D4]"
-      >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 2a10 10 0 100 20 10 10 0 000-20zM8.5 16.5A.5.5 0 018 16V8a.5.5 0 01.5-.5h7a.5.5 0 01.5.5v2.5a.5.5 0 01-1 0V9h-2.5v7h2.5v-2a.5.5 0 011 0v2.5a.5.5 0 01-.5.5h-7z" />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#06B6D4" className="h-16 w-16">
+        <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-3.5 9.25c0-1.03 1.12-1.75 2.5-1.75s2.5.72 2.5 1.75v.75c0 1.03-1.12 1.75-2.5 1.75s-2.5-.72-2.5-1.75v-.75zm7 0c0-1.03 1.12-1.75 2.5-1.75s2.5.72 2.5 1.75v.75c0 1.03-1.12 1.75-2.5 1.75s-2.5-.72-2.5-1.75v-.75z"/>
       </svg>
     ),
   },
@@ -193,10 +165,9 @@ const skills = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill="currentColor"
-        className="h-16 w-16 text-[#2496ED]"
+        fill="#2496ED"
+        className="h-16 w-16"
       >
-        <path d="M0 0h24v24H0z" fill="none" />
         <path d="M21.7 8.3s-1.8-1.7-4.2-1.7H4.2C2.5 6.6 2 7.8 2 7.8v7.6c0 .8.6 1.4 1.4 1.4h17.2c.8 0 1.4-.6 1.4-1.4V8.3zM7 12H5v-2h2v2zm4 0H9v-2h2v2zm4 0h-2v-2h2v2z" />
         <path d="M4.6 5.2a.4.4 0 00-.4.4v.4h15.6v-.4a.4.4 0 00-.4-.4H4.6z" />
       </svg>
@@ -208,19 +179,13 @@ const skills = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill="currentColor"
         className="h-16 w-16"
       >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" fill="#F24E1E" />
-        <path d="M12 2a10 10 0 00-7.07 17.07A10 10 0 0012 22z" fill="#FF7262" />
-        <path d="M12 2a10 10 0 000 20v-2a8 8 0 010-16V2z" fill="#A259FF" />
-        <path d="M12 12a2 2 0 11-4 0 2 2 0 014 0z" fill="#1ABCFE" />
-        <path
-          d="M12 12a2 2 0 100-4 2 2 0 000 4z"
-          transform="rotate(90 12 12)"
-          fill="#0ACF83"
-        />
+        <path fill="#F24E1E" d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
+        <path fill="#FF7262" d="M12 2a10 10 0 00-7.07 17.07A10 10 0 0012 22z"/>
+        <path fill="#A259FF" d="M12 2a10 10 0 000 20v-2a8 8 0 010-16V2z"/>
+        <path fill="#1ABCFE" d="M12 12a2 2 0 11-4 0 2 2 0 014 0z"/>
+        <path fill="#0ACF83" d="M12 12a2 2 0 100-4 2 2 0 000 4z" transform="rotate(90 12 12)"/>
       </svg>
     ),
   },
@@ -267,7 +232,7 @@ function SkillCard({
   return (
     <Card className="flex flex-col items-center justify-center gap-4 p-4 bg-card/50 hover:bg-card transition-colors duration-300 transform hover:-translate-y-1 aspect-square">
       {Icon}
-      <p className="text-lg font-semibold text-center text-foreground">
+      <p className="text-xl font-semibold text-center text-foreground">
         {name}
       </p>
     </Card>
