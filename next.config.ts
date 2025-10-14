@@ -1,3 +1,4 @@
+
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
@@ -30,15 +31,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  devIndicators: {
-    buildActivity: false
-  },
-  experimental: {
-    allowedDevOrigins: [
-      "https://*.cloudworkstations.dev",
-      "https://*.firebase.studio"
-    ]
-  }
 };
 
 export default nextConfig;
