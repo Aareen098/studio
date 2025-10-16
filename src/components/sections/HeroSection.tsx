@@ -37,7 +37,7 @@ export function HeroSection() {
               aria-label="Aareen's professional headshot."
             >
               <Image
-                src="https://picsum.photos/seed/headshot/400/400"
+                src="/aareen-headshot.png"
                 alt="Aareen's professional headshot"
                 fill
                 style={{ objectFit: 'cover' }}
