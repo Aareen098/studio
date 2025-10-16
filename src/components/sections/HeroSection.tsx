@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
+import Image from "next/image";
 
 export function HeroSection() {
   return (
@@ -31,11 +32,18 @@ export function HeroSection() {
           </div>
           <div className="flex justify-center lg:justify-end w-full">
             <div
-              className="w-80 h-80 rounded-full overflow-hidden shadow-2xl bg-cover bg-center"
-              style={{ backgroundImage: "url('https://picsum.photos/seed/headshot/400/400')" }}
+              className="relative w-80 h-80 rounded-full overflow-hidden shadow-2xl"
               role="img"
               aria-label="Aareen's professional headshot."
-            />
+            >
+              <Image
+                src="https://picsum.photos/seed/headshot/400/400"
+                alt="Aareen's professional headshot"
+                fill
+                style={{ objectFit: 'cover' }}
+                priority
+              />
+            </div>
           </div>
         </div>
       </div>
