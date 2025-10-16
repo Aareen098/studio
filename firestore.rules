@@ -1,42 +1,44 @@
+/**
+ * @fileoverview Firestore Security Rules for the portfolio website.
+ *
+ * Core Philosophy:
+ * This ruleset prioritizes security by requiring authentication for write operations on contact form submissions, while allowing public read access.
+ *
+ * Data Structure:
+ * All contact form submissions are stored in the top-level `contactFormSubmissions` collection.
+ *
+ * Key Security Decisions:
+ * - Requires authentication for creating, updating, and deleting contact form submissions.
+ * - Allows public read access (get, list) to contact form submissions.
+ */
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // --- Helper Functions ---
-
     /**
-      * @description Checks if the user is signed in (authenticated).
-      * @return {bool} True if the user is signed in, false otherwise.
-      */
+     * @description Manages access to contact form submissions. Authenticated users can create, update, or delete submissions. Anyone can read submissions.
+     * @path /contactFormSubmissions/{contactFormSubmissionId}
+     * @allow (create) - An authenticated user can create a submission.
+     *   - Request: auth.uid = "user123", request.resource.data = { id: "form456", name: "John Doe", email: "john@example.com", message: "Hello", submissionDate: "2024-01-01" }
+     * @allow (update) - An authenticated user can update a submission.
+     *   - Request: auth.uid = "user123", resource.data = { id: "form456", name: "John Doe", email: "john@example.com", message: "Updated Message", submissionDate: "2024-01-01" }
+     * @allow (delete) - An authenticated user can delete a submission.
+     *   - Request: auth.uid = "user123"
+     * @allow (get, list) - Anyone can read submissions.
+     * @deny (create) - An unauthenticated user cannot create a submission.
+     *   - Request: auth.uid = null, request.resource.data = { id: "form456", name: "John Doe", email: "john@example.com", message: "Hello", submissionDate: "2024-01-01" }
+     * @principle Requires authentication for writes. Allows public reads.
+     */
+    match /contactFormSubmissions/{contactFormSubmissionId} {
+      allow get, list: if true;
+      allow create: if isSignedIn();
+      allow update: if isSignedIn() && resource != null;
+      allow delete: if isSignedIn() && resource != null;
+    }
+
+    // --- Helper functions ---
     function isSignedIn() {
       return request.auth != null;
-    }
-
-    /**
-      * @description Checks if the user is an administrator.
-      * @return {bool} True if the user is an admin, false otherwise.
-      */
-    function isAdmin() {
-      return isSignedIn() && request.auth.token.admin == true;
-    }
-
-    // --- Security Rules ---
-
-    /**
-      * @summary
-      * This is a good place to start for your security rules.
-      *
-      * @description
-      * - Authenticated users can read and write to their own data.
-      * - Administrators can read and write to all data.
-      * - All other access is denied.
-      *
-      * @principle User data is private.
-      * @principle Administrators can manage all data.
-      */
-    match /{path=**} {
-      allow read, write: if true;
     }
   }
 }

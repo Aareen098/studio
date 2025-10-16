@@ -1,0 +1,68 @@
+{
+  "entities": {
+    "ContactFormSubmission": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContactFormSubmission",
+      "type": "object",
+      "description": "Represents a contact form submission from the portfolio website.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the contact form submission."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the person submitting the form."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the person submitting the form.",
+          "format": "email"
+        },
+        "message": {
+          "type": "string",
+          "description": "The message content from the contact form."
+        },
+        "submissionDate": {
+          "type": "string",
+          "description": "The date and time the form was submitted.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "message",
+        "submissionDate"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/contactFormSubmissions/{contactFormSubmissionId}",
+        "definition": {
+          "entityName": "ContactFormSubmission",
+          "schema": {
+            "$ref": "#/backend/entities/ContactFormSubmission"
+          },
+          "description": "Stores contact form submissions from the portfolio website. No denormalized authorization fields are included.",
+          "params": [
+            {
+              "name": "contactFormSubmissionId",
+              "description": "Unique identifier for the contact form submission."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "Based on the provided application requirements and the contact form submission entity, I recommend a simple collection to store the contact form submissions. This structure prioritizes ease of use and security. All documents within the `contactFormSubmissions` collection will share the same security rules, satisfying the homogeneous security posture requirement.\n\n**Authorization Independence:** Since there's no hierarchical relationship or user-specific ownership for contact form submissions (they are essentially public submissions to the portfolio owner), denormalization is not strictly necessary. Access control will primarily focus on preventing unauthorized writes (e.g., spam). Read access can be open, or restricted via authentication if needed in the future.\n\n**QAPs:** The structure supports listing operations securely. Limiting the number of documents returned in list queries and implementing rate limiting on form submissions will address potential abuse scenarios. Because we expect only authenticated users to manage the contact form submissions in the future, the rules will be written to only allow authenticated writes."
+  }
+}
