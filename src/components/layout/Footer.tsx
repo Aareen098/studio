@@ -8,9 +8,12 @@ export function Footer() {
     <footer className="bg-card">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Aareen's Portfolio. All rights reserved.
-          </p>
+          <div className="text-sm text-muted-foreground">
+            <p>© {new Date().getFullYear()} Aareen's Portfolio. All rights reserved.</p>
+            <div className="mt-2 text-center md:text-left">
+              <Link href="/login" className="text-xs hover:text-primary transition-colors">Admin Login</Link>
+            </div>
+          </div>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" asChild>
               <Link href="#" aria-label="GitHub">
