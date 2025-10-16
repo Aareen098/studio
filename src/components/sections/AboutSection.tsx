@@ -18,10 +18,13 @@ export function AboutSection() {
         </div>
         <div className="mt-12 space-y-6 text-lg text-muted-foreground text-left md:text-center">
           <p>
-            From my first "Hello World" in a terminal, I was captivated by the power of programming to bring ideas to life. My passion for technology has evolved into a career dedicated to building elegant and efficient solutions to complex problems. I thrive in collaborative environments, leveraging my skills in both front-end and back-end development to contribute to all stages of the product lifecycle.
+          My journey into the world of technology began with curiosity and a drive to create. As a BCA graduate currently pursuing an MCA from Lovely Professional University, I’ve developed a strong foundation in computer science and an ever-growing passion for crafting responsive and user-friendly web applications. My expertise lies in front-end development and Python programming, where I enjoy turning ideas into clean, functional, and visually appealing digital experiences.
           </p>
           <p>
-            Beyond the code, I'm a firm believer in lifelong learning and am constantly exploring new technologies to stay at the forefront of the industry. When I'm not at my keyboard, you might find me exploring hiking trails, experimenting with new recipes, or immersed in a good science fiction novel.
+          I’m also deeply fascinated by cybersecurity, constantly exploring how systems can be protected and optimized in today’s evolving digital landscape.
+          </p>
+          <p>
+          Beyond coding, I believe in continuous learning and innovation — staying up to date with emerging technologies and industry trends. Whether it’s improving my skills, contributing to open-source projects, or experimenting with new frameworks, I’m always eager to grow as a developer and problem-solver.
           </p>
         </div>
       </div>

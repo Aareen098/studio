@@ -11,13 +11,13 @@ export function HeroSection() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div className="text-center lg:text-left">
             <h1 className="text-4xl font-bold tracking-tighter text-foreground sm:text-6xl md:text-7xl">
-              Aareen
+              Aareen Anand
             </h1>
             <p className="mt-4 text-2xl font-medium tracking-tight text-primary">
-              Full-Stack Developer & UI/UX Enthusiast
+            Front-End Specialist | Cybersecurity Enthusiast
             </p>
             <p className="mt-6 max-w-xl mx-auto lg:mx-0 text-lg text-muted-foreground">
-              Crafting seamless digital experiences from concept to deployment. I specialize in building robust, user-friendly web applications that leave a lasting impression.
+            I develop responsive and dynamic web applications with a focus on performance, usability, and security. My goal is to create digital products that not only look great but are reliable and secure from the ground up.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <Button asChild size="lg">
