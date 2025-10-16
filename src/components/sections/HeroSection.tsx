@@ -37,7 +37,7 @@ export function HeroSection() {
               aria-label="Aareen's professional headshot."
             >
               <Image
-                src="/aareen-headshot.png"
+                src="/IMG-20241028-WA0018.jpg"
                 alt="Aareen's professional headshot"
                 fill
                 style={{ objectFit: 'cover' }}
