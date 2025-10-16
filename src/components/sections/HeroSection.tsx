@@ -31,13 +31,13 @@ export function HeroSection() {
             </div>
           </div>
           <div className="flex justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/aareen-headshot.png"
+            <Image
+              src="https://picsum.photos/seed/headshot/400/400"
               alt="Aareen's professional headshot."
               width={400}
               height={400}
               className="rounded-full aspect-square object-cover border-8 border-primary/10 shadow-2xl"
+              data-ai-hint="professional headshot"
             />
           </div>
         </div>
