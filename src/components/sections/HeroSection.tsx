@@ -1,5 +1,4 @@
 
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
@@ -31,14 +30,15 @@ export function HeroSection() {
             </div>
           </div>
           <div className="flex justify-center">
-            <Image
-              src="https://picsum.photos/seed/headshot/400/400"
-              alt="Aareen's professional headshot."
-              width={400}
-              height={400}
-              className="rounded-full aspect-square object-cover border-8 border-primary/10 shadow-2xl"
+            <div
+              className="h-[400px] w-[400px] rounded-full bg-cover bg-center border-8 border-primary/10 shadow-2xl"
+              style={{
+                backgroundImage: `url('https://picsum.photos/seed/headshot/400/400')`,
+              }}
+              role="img"
+              aria-label="Aareen's professional headshot."
               data-ai-hint="professional headshot"
-            />
+            ></div>
           </div>
         </div>
       </div>
