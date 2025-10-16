@@ -2,8 +2,6 @@
 "use server";
 
 import { z } from "zod";
-import { getAdminFirestore } from "@/firebase/admin";
-import { FieldValue } from "firebase-admin/firestore";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -24,28 +22,12 @@ export async function submitContactForm(data: z.infer<typeof contactSchema>) {
     };
   }
 
-  try {
-    const firestore = getAdminFirestore();
-    const submissionData = {
-      ...validatedFields.data,
-      submissionDate: new Date().toISOString(),
-    };
+  // This is now handled on the client-side. 
+  // This server action could be removed if not used elsewhere,
+  // but we'll keep it for now.
 
-    await firestore.collection("contactFormSubmissions").add(submissionData);
-
-    return {
-      success: true,
-      message: "Thank you for your message! I'll get back to you soon.",
-    };
-  } catch (error) {
-    console.error("Error submitting form to Firebase:", error);
-    let errorMessage = "An unexpected error occurred.";
-    if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    return {
-      success: false,
-      message: `There was an error saving your message: ${errorMessage}`,
-    };
-  }
+  return {
+    success: true,
+    message: "Validation successful on server.",
+  };
 }

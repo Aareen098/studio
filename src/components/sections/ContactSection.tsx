@@ -8,7 +8,10 @@ import { useTransition } from "react";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import { submitContactForm } from "@/lib/actions";
+import { useFirestore } from "@/firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { errorEmitter } from "@/firebase/error-emitter";
+import { FirestorePermissionError } from "@/firebase/errors";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -39,6 +42,7 @@ export function ContactSection() {
   const { ref, inView } = useInView({ threshold: 0.1 });
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
+  const firestore = useFirestore();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,17 +55,39 @@ export function ContactSection() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     startTransition(async () => {
-      const result = await submitContactForm(values);
-      if (result.success) {
-        toast({
-          title: "Message Sent!",
-          description: result.message,
-        });
-        form.reset();
-      } else {
+      if (!firestore) {
         toast({
           title: "Error",
-          description: result.message,
+          description: "Could not connect to the database.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      try {
+        const submissionsCollection = collection(firestore, 'contactFormSubmissions');
+        await addDoc(submissionsCollection, {
+          ...values,
+          submissionDate: new Date().toISOString(),
+        });
+        
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your message! I'll get back to you soon.",
+        });
+        form.reset();
+      } catch (error) {
+         const collectionRef = collection(firestore, 'contactFormSubmissions');
+         const permissionError = new FirestorePermissionError({
+            path: collectionRef.path,
+            operation: 'create',
+            requestResourceData: values,
+          });
+          errorEmitter.emit('permission-error', permissionError);
+
+        toast({
+          title: "Error",
+          description: "There was a problem sending your message.",
           variant: "destructive",
         });
       }
