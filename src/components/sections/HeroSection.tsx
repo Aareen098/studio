@@ -32,7 +32,7 @@ export function HeroSection() {
           <div className="flex justify-center lg:justify-end w-full">
             <div
               className="w-80 h-80 rounded-full overflow-hidden shadow-2xl bg-cover bg-center"
-              style={{ backgroundImage: "url('/aareen-headshot.png')" }}
+              style={{ backgroundImage: "url('https://picsum.photos/seed/headshot/400/400')" }}
               role="img"
               aria-label="Aareen's professional headshot."
             />
