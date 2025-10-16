@@ -2,23 +2,24 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
+import Image from "next/image";
 
 export function HeroSection() {
   return (
     <section id="home" className="py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <div className="text-center lg:text-left">
+        <div className="flex flex-col items-center gap-12">
+          <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tighter text-foreground sm:text-6xl md:text-7xl">
               Aareen
             </h1>
             <p className="mt-4 text-2xl font-medium tracking-tight text-primary">
               Full-Stack Developer & UI/UX Enthusiast
             </p>
-            <p className="mt-6 max-w-xl mx-auto lg:mx-0 text-lg text-muted-foreground">
+            <p className="mt-6 max-w-xl mx-auto text-lg text-muted-foreground">
               Crafting seamless digital experiences from concept to deployment. I specialize in building robust, user-friendly web applications that leave a lasting impression.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button asChild size="lg">
                 <Link href="#contact">
                   Get In Touch <MoveRight className="ml-2 h-5 w-5" />
@@ -29,16 +30,21 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center w-full max-w-sm">
             <div
-              className="h-[400px] w-[400px] rounded-full bg-cover bg-center border-8 border-primary/10 shadow-2xl"
-              style={{
-                backgroundImage: `url('https://picsum.photos/seed/headshot/400/400')`,
-              }}
+              className="w-full h-auto rounded-lg overflow-hidden shadow-2xl"
               role="img"
               aria-label="Aareen's professional headshot."
-              data-ai-hint="professional headshot"
-            ></div>
+            >
+              <Image
+                src="/aareen-headshot.png"
+                alt="Aareen's professional headshot."
+                width={400}
+                height={500}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
       </div>
