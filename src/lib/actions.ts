@@ -2,8 +2,8 @@
 "use server";
 
 import { z } from "zod";
-import { collection } from "firebase/firestore";
-import { addDocumentNonBlocking, initializeFirebase } from "@/firebase";
+import { getAdminFirestore } from "@/firebase/admin";
+import { FieldValue } from "firebase-admin/firestore";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -25,14 +25,13 @@ export async function submitContactForm(data: z.infer<typeof contactSchema>) {
   }
 
   try {
-    const { firestore } = initializeFirebase();
+    const firestore = getAdminFirestore();
     const submissionData = {
       ...validatedFields.data,
       submissionDate: new Date().toISOString(),
     };
 
-    const submissionsCollection = collection(firestore, "contactFormSubmissions");
-    await addDocumentNonBlocking(submissionsCollection, submissionData);
+    await firestore.collection("contactFormSubmissions").add(submissionData);
 
     return {
       success: true,
