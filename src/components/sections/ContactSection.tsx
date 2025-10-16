@@ -10,8 +10,6 @@ import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { errorEmitter } from "@/firebase/error-emitter";
-import { FirestorePermissionError } from "@/firebase/errors";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -77,14 +75,7 @@ export function ContactSection() {
         });
         form.reset();
       } catch (error) {
-         const collectionRef = collection(firestore, 'contactFormSubmissions');
-         const permissionError = new FirestorePermissionError({
-            path: collectionRef.path,
-            operation: 'create',
-            requestResourceData: values,
-          });
-          errorEmitter.emit('permission-error', permissionError);
-
+        console.error("Error submitting form:", error);
         toast({
           title: "Error",
           description: "There was a problem sending your message.",
