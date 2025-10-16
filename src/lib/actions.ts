@@ -2,6 +2,8 @@
 "use server";
 
 import { z } from "zod";
+import { collection } from "firebase/firestore";
+import { addDocumentNonBlocking, initializeFirebase } from "@/firebase";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -22,14 +24,29 @@ export async function submitContactForm(data: z.infer<typeof contactSchema>) {
     };
   }
 
-  // Since we removed Firebase Admin, we can't save to Firestore from the server anymore.
-  // We'll simulate a successful submission for now.
-  // In a real app, you would integrate with an email service like SendGrid or Resend here.
-  
-  console.log("Contact form submitted:", validatedFields.data);
+  try {
+    const { firestore } = initializeFirebase();
+    const submissionData = {
+      ...validatedFields.data,
+      submissionDate: new Date().toISOString(),
+    };
 
-  return {
-    success: true,
-    message: "Thank you for your message! I'll get back to you soon.",
-  };
+    const submissionsCollection = collection(firestore, "contactFormSubmissions");
+    await addDocumentNonBlocking(submissionsCollection, submissionData);
+
+    return {
+      success: true,
+      message: "Thank you for your message! I'll get back to you soon.",
+    };
+  } catch (error) {
+    console.error("Error submitting form to Firebase:", error);
+    let errorMessage = "An unexpected error occurred.";
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    }
+    return {
+      success: false,
+      message: `There was an error saving your message: ${errorMessage}`,
+    };
+  }
 }
