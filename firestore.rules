@@ -1,44 +1,18 @@
-/**
- * @fileoverview Firestore Security Rules for the portfolio website.
- *
- * Core Philosophy:
- * This ruleset prioritizes security by ensuring only authenticated users can create, update, or delete contact form submissions.
- * Read access is open to the public, allowing anyone to view the submissions (e.g., for display on an admin dashboard).
- *
- * Data Structure:
- * All contact form submissions are stored in a flat collection at `/contactFormSubmissions/{contactFormSubmissionId}`.
- *
- * Key Security Decisions:
- * - Open read access for all.
- * - Only authenticated users can write.
- * - No user-specific ownership is enforced.
- */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    /**
-     * @description Secure contact form submissions.
-     * @path /contactFormSubmissions/{contactFormSubmissionId}
-     * @allow (get, list) Allow anyone to read the contact form submissions.
-     * @allow (create) Allow authenticated user to create a contact form submission.
-     * @deny (create) Deny unauthenticated user to create a contact form submission.
-     * @allow (update, delete) Allow authenticated user to update or delete a contact form submission.
-     * @deny (update, delete) Deny unauthenticated user to update or delete a contact form submission.
-     * @principle Allow anyone to read; restrict write access to authenticated users.
-     */
     match /contactFormSubmissions/{contactFormSubmissionId} {
+      // Allow anyone to read submissions (e.g., for an admin panel)
       allow get: if true;
       allow list: if true;
 
-      allow create: if isSignedIn();
-      allow update: if isSignedIn() && resource != null;
-      allow delete: if isSignedIn() && resource != null;
-    }
+      // Allow ANYONE to create a new submission (i.e., submit the contact form)
+      allow create: if true;
 
-    // Helper function to check if the user is signed in
-    function isSignedIn() {
-      return request.auth != null;
+      // Only allow authenticated users (i.e., you, the admin) to update or delete
+      allow update: if request.auth != null;
+      allow delete: if request.auth != null;
     }
   }
 }
