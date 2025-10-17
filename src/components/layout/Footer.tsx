@@ -13,12 +13,12 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" asChild>
-              <Link href="#" aria-label="GitHub">
+              <Link href="https://github.com/Aareen098" aria-label="GitHub">
                 <Github className="h-5 w-5" />
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <Link href="#" aria-label="LinkedIn">
+              <Link href="https://www.linkedin.com/in/aareen-anand-85aa49208" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </Link>
             </Button>
