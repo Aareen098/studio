@@ -32,7 +32,7 @@ export function HeroSection() {
           </div>
           <div className="flex justify-center">
             <div
-              className="relative w-80 h-80 rounded-full overflow-hidden shadow-2xl"
+              className="relative w-80 h-80 rounded-full overflow-hidden shadow-2xl ring-4 ring-primary/30 ring-offset-4 ring-offset-background"
               role="img"
               aria-label="Aareen's professional headshot."
             >
