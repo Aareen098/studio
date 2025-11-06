@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, Gem } from "lucide-react";
+import { Menu, Gem, Download } from "lucide-react";
 import React from "react";
 
 const navLinks = [
@@ -50,7 +50,10 @@ export function Header() {
             <NavLinks />
           </nav>
           <Button asChild>
-            <Link href="#contact">Hire Me</Link>
+            <Link href="/Aareen_Anand_CV.pdf" target="_blank" rel="noopener noreferrer">
+                <Download className="mr-2 h-4 w-4" />
+                View CV
+            </Link>
           </Button>
         </div>
 
@@ -69,7 +72,10 @@ export function Header() {
                 </nav>
               </div>
               <Button asChild className="w-full">
-                <Link href="#contact">Hire Me</Link>
+                <Link href="/Aareen_Anand_CV.pdf" target="_blank" rel="noopener noreferrer">
+                    <Download className="mr-2 h-4 w-4" />
+                    View CV
+                </Link>
               </Button>
             </div>
           </SheetContent>

@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { MoveRight } from "lucide-react";
+import { Download } from "lucide-react";
 import Image from "next/image";
 
 export function HeroSection() {
@@ -21,8 +21,8 @@ export function HeroSection() {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <Button asChild size="lg">
-                <Link href="#contact">
-                  Get In Touch <MoveRight className="ml-2 h-5 w-5" />
+                <Link href="/Aareen_Anand_CV.pdf" target="_blank" rel="noopener noreferrer">
+                  <Download className="mr-2 h-5 w-5" /> View CV
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
