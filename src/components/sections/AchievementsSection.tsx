@@ -11,17 +11,17 @@ import { Download } from "lucide-react";
 
 const achievements = [
   {
-    title: "LPU Hackerthon 2023 Winner",
-    image: "https://picsum.photos/seed/ach1/600/400",
-    fileUrl: "#",
-    description: "First place in the LPU Hackerthon for developing an innovative security solution.",
+    title: "Hackmanthan Hackathon",
+    image: "/Hackathon Cert.jpg",
+    fileUrl: "/Hackathon Cert.jpg",
+    description: "Participated in Hackathon Hackmanthan by GeeksForGeeks and EventEye.",
     imageHint: "award certificate"
   },
   {
-    title: "Top Performer Award",
-    image: "https://picsum.photos/seed/ach2/600/400",
-    fileUrl: "#",
-    description: "Recognized as a top performer for academic excellence.",
+    title: "Full Stack Development Workshop",
+    image: "/Screenshot (156).png",
+    fileUrl: "/12518770.pdf",
+    description: "Attended Workshop on Full stack development by GeeksForGeeks.",
     imageHint: "trophy"
   },
 ];

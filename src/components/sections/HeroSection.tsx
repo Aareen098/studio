@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Download, Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 
 export function HeroSection() {
@@ -19,14 +19,21 @@ export function HeroSection() {
             <p className="mt-6 max-w-xl mx-auto md:mx-0 text-lg text-muted-foreground">
             I develop responsive and dynamic web applications with a focus on performance, usability, and security. My goal is to create digital products that not only look great but are reliable and secure from the ground up.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+            <div className="mt-10 flex items-center justify-center md:justify-start gap-4">
               <Button asChild size="lg">
                 <Link href="/AAREEN%20RESume.pdf" target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2 h-5 w-5" /> View CV
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="#projects">View My Work</Link>
+              <Button variant="outline" size="icon" asChild>
+                <Link href="https://github.com/Aareen098" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <Github className="h-5 w-5" />
+                </Link>
+              </Button>
+              <Button variant="outline" size="icon" asChild>
+                <Link href="https://www.linkedin.com/in/aareen-anand-85aa49208" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <Linkedin className="h-5 w-5" />
+                </Link>
               </Button>
             </div>
           </div>
