@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -29,7 +30,7 @@ const projects = [
     description: "A personal portfolio website built with Next.js and Tailwind CSS to showcase my skills and projects. Features a modern, responsive design and a clean user interface.",
     image: {
       id: "project-2",
-      imageUrl: "/(155).png",
+      imageUrl: "/%28155%29.png",
       description: "Screenshot of My Portfolio project",
       imageHint: "portfolio website"
     },
