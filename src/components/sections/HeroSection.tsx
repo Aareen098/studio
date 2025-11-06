@@ -21,7 +21,7 @@ export function HeroSection() {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
               <Button asChild size="lg">
-                <Link href="/Aareen_Anand_CV.pdf" target="_blank" rel="noopener noreferrer">
+                <Link href="/AAREEN%20RESume.pdf" target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2 h-5 w-5" /> View CV
                 </Link>
               </Button>

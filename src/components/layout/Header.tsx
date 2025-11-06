@@ -50,7 +50,7 @@ export function Header() {
             <NavLinks />
           </nav>
           <Button asChild>
-            <Link href="/Aareen_Anand_CV.pdf" target="_blank" rel="noopener noreferrer">
+            <Link href="/AAREEN%20RESume.pdf" target="_blank" rel="noopener noreferrer">
                 <Download className="mr-2 h-4 w-4" />
                 View CV
             </Link>
@@ -72,7 +72,7 @@ export function Header() {
                 </nav>
               </div>
               <Button asChild className="w-full">
-                <Link href="/Aareen_Anand_CV.pdf" target="_blank" rel="noopener noreferrer">
+                <Link href="/AAREEN%20RESume.pdf" target="_blank" rel="noopener noreferrer">
                     <Download className="mr-2 h-4 w-4" />
                     View CV
                 </Link>
