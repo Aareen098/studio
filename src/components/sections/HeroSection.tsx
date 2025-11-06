@@ -30,7 +30,7 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <div className="flex justify-center md:justify-end">
+          <div className="flex justify-center">
             <div
               className="relative w-80 h-80 rounded-full overflow-hidden shadow-2xl"
               role="img"
