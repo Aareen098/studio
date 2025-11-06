@@ -25,12 +25,17 @@ const projects = [
     live: "https://phishaware-hazel.vercel.app/",
   },
   {
-    title: "Project Two",
-    description: "An interactive data visualization tool that turns complex datasets into understandable insights. Features real-time updates and a highly configurable interface.",
-    image: PlaceHolderImages.find((img) => img.id === "project-2"),
-    tags: ["React", "D3.js", "Firebase"],
-    github: "#",
-    live: "#",
+    title: "My Portfolio",
+    description: "A personal portfolio website built with Next.js and Tailwind CSS to showcase my skills and projects. Features a modern, responsive design and a clean user interface.",
+    image: {
+      id: "project-2",
+      imageUrl: "/(155).png",
+      description: "Screenshot of My Portfolio project",
+      imageHint: "portfolio website"
+    },
+    tags: ["Next.js", "Tailwind CSS", "TypeScript"],
+    github: "https://github.com/Aareen098/studio",
+    live: "https://studio-nine.vercel.app/",
   },
   {
     title: "Project Three",
