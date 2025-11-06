@@ -21,8 +21,8 @@ const projects = [
       imageHint: "web application security"
     },
     tags: ["Next.js", "TypeScript", "Firebase"],
-    github: "#",
-    live: "#",
+    github: "https://github.com/Aareen098/Phishaware",
+    live: "https://phishaware-hazel.vercel.app/",
   },
   {
     title: "Project Two",
