@@ -24,17 +24,13 @@
           "type": "string",
           "description": "The company name of the person."
         },
-        "projectType": {
+        "inquiryType": {
           "type": "string",
-          "description": "The type of project the person is interested in."
-        },
-        "budget": {
-          "type": "string",
-          "description": "The estimated budget for the project."
+          "description": "The type of inquiry (e.g., Full-Time, Freelance)."
         },
         "message": {
           "type": "string",
-          "description": "The detailed project description from the form."
+          "description": "The detailed message from the form."
         },
         "submissionDate": {
           "type": "string",
@@ -46,8 +42,7 @@
         "id",
         "name",
         "email",
-        "projectType",
-        "budget",
+        "inquiryType",
         "message",
         "submissionDate"
       ]

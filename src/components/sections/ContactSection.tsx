@@ -33,8 +33,7 @@ const formSchema = z.object({
     message: "Please enter a valid email address.",
   }),
   company: z.string().optional(),
-  projectType: z.string().min(1, { message: "Please select a project type." }),
-  budget: z.string().min(1, { message: "Please select a budget range." }),
+  inquiryType: z.string().min(1, { message: "Please select an inquiry type." }),
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
   }),
@@ -52,8 +51,7 @@ export function ContactSection() {
       name: "",
       email: "",
       company: "",
-      projectType: "",
-      budget: "",
+      inquiryType: "",
       message: "",
     },
   });
@@ -148,20 +146,20 @@ export function ContactSection() {
                 />
                  <FormField
                   control={form.control}
-                  name="projectType"
+                  name="inquiryType"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Project Type</FormLabel>
+                      <FormLabel>Inquiry Type</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="What are you looking for?" />
+                            <SelectValue placeholder="What can I help you with?" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="frontend">Frontend Development</SelectItem>
-                          <SelectItem value="fullstack">Full-Stack Development</SelectItem>
-                          <SelectItem value="consulting">Consulting</SelectItem>
+                          <SelectItem value="full-time">Full-Time Position</SelectItem>
+                          <SelectItem value="freelance-contract">Freelance / Contract</SelectItem>
+                          <SelectItem value="collaboration">Collaboration</SelectItem>
                           <SelectItem value="other">Other</SelectItem>
                         </SelectContent>
                       </Select>
@@ -170,38 +168,15 @@ export function ContactSection() {
                   )}
                 />
               </div>
-               <FormField
-                  control={form.control}
-                  name="budget"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Estimated Budget</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select your budget range" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="<5k">Under $5,000</SelectItem>
-                          <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
-                          <SelectItem value="10k-25k">$10,000 - $25,000</SelectItem>
-                          <SelectItem value="25k+">$25,000+</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
               <FormField
                 control={form.control}
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Project Description</FormLabel>
+                    <FormLabel>Details</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Tell me about your project, goals, and timeline."
+                        placeholder="Tell me more about the opportunity or your project."
                         className="min-h-[150px]"
                         {...field}
                       />
