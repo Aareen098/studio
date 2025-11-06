@@ -8,7 +8,7 @@ export function HeroSection() {
   return (
     <section id="home" className="py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col-reverse items-center gap-12 md:flex-row md:grid-cols-2">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div className="text-center md:text-left">
             <h1 className="text-4xl font-bold tracking-tighter text-foreground sm:text-6xl md:text-7xl">
               Aareen Anand
@@ -30,7 +30,7 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <div className="flex justify-center md:justify-end w-full">
+          <div className="flex justify-center md:justify-end">
             <div
               className="relative w-80 h-80 rounded-full overflow-hidden shadow-2xl"
               role="img"
