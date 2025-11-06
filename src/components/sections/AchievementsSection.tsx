@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 
@@ -38,7 +38,7 @@ export function AchievementsSection() {
           </h2>
           <p className="mt-4 text-lg text-primary">Highlights of my journey.</p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {achievements.map((achievement) => (
             <Card key={achievement.title} className="flex flex-col overflow-hidden group">
               <div className="overflow-hidden">
@@ -53,10 +53,10 @@ export function AchievementsSection() {
               </div>
               <CardHeader>
                 <CardTitle>{achievement.title}</CardTitle>
+                <CardDescription>{achievement.description}</CardDescription>
               </CardHeader>
-              <CardContent className="flex-grow flex items-center justify-between">
-                <p className="text-muted-foreground text-sm">{achievement.description}</p>
-                <Button asChild variant="secondary">
+              <CardContent className="flex-grow flex items-end">
+                <Button asChild variant="secondary" className="w-full">
                   <Link href={achievement.fileUrl} target="_blank" rel="noopener noreferrer">
                     <Download className="mr-2 h-4 w-4" /> View
                   </Link>

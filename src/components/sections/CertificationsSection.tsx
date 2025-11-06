@@ -10,19 +10,14 @@ import { ArrowUpRight } from "lucide-react";
 
 const certifications = [
   {
-    title: "Cyber Security Professional Certificate",
-    issuer: "Google",
-    link: "#",
-  },
-  {
     title: "Introduction to Cybersecurity",
-    issuer: "Cisco",
-    link: "#",
+    issuer: "Google",
+    link: "https://www.coursera.org/account/accomplishments/verify/Y7H9ZQJ1NN3X",
   },
   {
-    title: "Foundations of Cybersecurity",
-    issuer: "Google",
-    link: "#",
+    title: "Programming in Javascript",
+    issuer: "Meta",
+    link: "https://www.coursera.org/account/accomplishments/verify/W7XXGYDWI3NJ",
   },
 ];
 
