@@ -32,9 +32,12 @@ export function HeroSection() {
           </div>
           <div className="flex justify-center">
             <div
-              className="relative w-80 h-80 rounded-full overflow-hidden shadow-2xl ring-4 ring-primary/30 ring-offset-4 ring-offset-background"
+              className="relative w-80 h-80 rounded-full overflow-hidden shadow-2xl animate-glow"
               role="img"
               aria-label="Aareen's professional headshot."
+              style={{
+                boxShadow: `0 0 15px 0px hsl(var(--primary)), 0 0 35px 0px hsl(var(--primary) / 0.7), 0 0 55px 0px hsl(var(--primary) / 0.4)`,
+              }}
             >
               <Image
                 src="/IMG-20241028-WA0018.jpg"
@@ -42,6 +45,7 @@ export function HeroSection() {
                 fill
                 style={{ objectFit: 'cover' }}
                 priority
+                className="rounded-full"
               />
             </div>
           </div>
