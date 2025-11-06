@@ -32,10 +32,6 @@ const skills = [
     icon: <SiNextdotjs size="4em" className="text-foreground" />,
   },
   {
-    name: "Node.js",
-    icon: <DiNodejsSmall size="4em" className="text-[#339933]" />,
-  },
-  {
     name: "Python",
     icon: <DiPython size="4em" className="text-[#3776AB]" />,
   },
