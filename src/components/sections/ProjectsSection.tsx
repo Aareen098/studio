@@ -12,15 +12,15 @@ import { Github, ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    title: "Project One",
-    description: "A deep dive into modern web architecture, this project showcases a robust backend with a sleek, responsive frontend.",
+    title: "PhishAware",
+    description: "An interactive, web-based learning app that helps users recognize and defend against phishing, fake websites, and social engineering.",
     image: {
       id: "project-1",
       imageUrl: "/Screenshot (154).png",
-      description: "Screenshot of Project One",
-      imageHint: "web application"
+      description: "Screenshot of PhishAware project",
+      imageHint: "web application security"
     },
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    tags: ["Next.js", "TypeScript", "Firebase"],
     github: "#",
     live: "#",
   },
