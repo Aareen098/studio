@@ -1,18 +1,14 @@
+
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    match /contactFormSubmissions/{contactFormSubmissionId} {
-      // Allow anyone to read submissions (e.g., for an admin panel)
-      allow get: if true;
-      allow list: if true;
-
-      // Allow ANYONE to create a new submission (i.e., submit the contact form)
+    match /hiringRequests/{hiringRequestId} {
+      // Allow ANYONE to create a new submission (i.e., submit the hire me form)
       allow create: if true;
 
-      // Only allow authenticated users (i.e., you, the admin) to update or delete
-      allow update: if request.auth != null;
-      allow delete: if request.auth != null;
+      // By default, deny all other operations for security
+      allow read, update, delete: if false;
     }
   }
 }

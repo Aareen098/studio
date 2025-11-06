@@ -22,6 +22,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Send } from "lucide-react";
 
 const formSchema = z.object({
@@ -31,6 +32,9 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
+  company: z.string().optional(),
+  projectType: z.string().min(1, { message: "Please select a project type." }),
+  budget: z.string().min(1, { message: "Please select a budget range." }),
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
   }),
@@ -47,6 +51,9 @@ export function ContactSection() {
     defaultValues: {
       name: "",
       email: "",
+      company: "",
+      projectType: "",
+      budget: "",
       message: "",
     },
   });
@@ -63,15 +70,15 @@ export function ContactSection() {
       }
 
       try {
-        const submissionsCollection = collection(firestore, 'contactFormSubmissions');
+        const submissionsCollection = collection(firestore, 'hiringRequests');
         await addDoc(submissionsCollection, {
           ...values,
           submissionDate: new Date().toISOString(),
         });
         
         toast({
-          title: "Message Sent!",
-          description: "Thank you for your message! I'll get back to you soon.",
+          title: "Inquiry Sent!",
+          description: "Thank you for your interest! I'll get back to you soon.",
         });
         form.reset();
       } catch (error) {
@@ -86,14 +93,14 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" ref={ref} className={cn("py-16 sm:py-24 bg-card", inView ? "opacity-100 animate-fade-in-up" : "opacity-0")}>
+    <section id="hire" ref={ref} className={cn("py-16 sm:py-24 bg-card", inView ? "opacity-100 animate-fade-in-up" : "opacity-0")}>
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Get In Touch
+            Hire Me
           </h2>
           <p className="mt-4 text-lg text-primary">
-            Have a project in mind or just want to say hi?
+            Let's build something amazing together.
           </p>
         </div>
         <div className="mt-12">
@@ -105,7 +112,7 @@ export function ContactSection() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Name</FormLabel>
+                      <FormLabel>Full Name</FormLabel>
                       <FormControl>
                         <Input placeholder="Your Name" {...field} />
                       </FormControl>
@@ -118,7 +125,7 @@ export function ContactSection() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel>Email Address</FormLabel>
                       <FormControl>
                         <Input placeholder="your.email@example.com" {...field} />
                       </FormControl>
@@ -126,16 +133,75 @@ export function ContactSection() {
                     </FormItem>
                   )}
                 />
+                 <FormField
+                  control={form.control}
+                  name="company"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Company Name (Optional)</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Your Company" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                 <FormField
+                  control={form.control}
+                  name="projectType"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Project Type</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="What are you looking for?" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="frontend">Frontend Development</SelectItem>
+                          <SelectItem value="fullstack">Full-Stack Development</SelectItem>
+                          <SelectItem value="consulting">Consulting</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
+               <FormField
+                  control={form.control}
+                  name="budget"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Estimated Budget</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select your budget range" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="<5k">Under $5,000</SelectItem>
+                          <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
+                          <SelectItem value="10k-25k">$10,000 - $25,000</SelectItem>
+                          <SelectItem value="25k+">$25,000+</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               <FormField
                 control={form.control}
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Message</FormLabel>
+                    <FormLabel>Project Description</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Tell me about your project or idea."
+                        placeholder="Tell me about your project, goals, and timeline."
                         className="min-h-[150px]"
                         {...field}
                       />
@@ -146,7 +212,7 @@ export function ContactSection() {
               />
               <div className="text-center">
                 <Button type="submit" size="lg" disabled={isPending}>
-                  {isPending ? "Sending..." : "Send Message"}
+                  {isPending ? "Sending..." : "Send Inquiry"}
                   <Send className="ml-2 h-4 w-4" />
                 </Button>
               </div>

@@ -1,27 +1,40 @@
+
 {
   "entities": {
-    "ContactFormSubmission": {
+    "HiringRequest": {
       "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "ContactFormSubmission",
+      "title": "HiringRequest",
       "type": "object",
-      "description": "Represents a contact form submission from the portfolio website.",
+      "description": "Represents a hiring inquiry from the portfolio website.",
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unique identifier for the contact form submission."
+          "description": "Unique identifier for the hiring request."
         },
         "name": {
           "type": "string",
-          "description": "The name of the person submitting the form."
+          "description": "The name of the person submitting the inquiry."
         },
         "email": {
           "type": "string",
-          "description": "The email address of the person submitting the form.",
+          "description": "The email address of the person submitting the inquiry.",
           "format": "email"
+        },
+        "company": {
+          "type": "string",
+          "description": "The company name of the person."
+        },
+        "projectType": {
+          "type": "string",
+          "description": "The type of project the person is interested in."
+        },
+        "budget": {
+          "type": "string",
+          "description": "The estimated budget for the project."
         },
         "message": {
           "type": "string",
-          "description": "The message content from the contact form."
+          "description": "The detailed project description from the form."
         },
         "submissionDate": {
           "type": "string",
@@ -33,6 +46,8 @@
         "id",
         "name",
         "email",
+        "projectType",
+        "budget",
         "message",
         "submissionDate"
       ]
@@ -47,22 +62,21 @@
   "firestore": {
     "structure": [
       {
-        "path": "/contactFormSubmissions/{contactFormSubmissionId}",
+        "path": "/hiringRequests/{hiringRequestId}",
         "definition": {
-          "entityName": "ContactFormSubmission",
+          "entityName": "HiringRequest",
           "schema": {
-            "$ref": "#/backend/entities/ContactFormSubmission"
+            "$ref": "#/backend/entities/HiringRequest"
           },
-          "description": "Stores contact form submissions from the portfolio website. No denormalized authorization fields are included.",
+          "description": "Stores hiring inquiries from the portfolio website.",
           "params": [
             {
-              "name": "contactFormSubmissionId",
-              "description": "Unique identifier for the contact form submission."
+              "name": "hiringRequestId",
+              "description": "Unique identifier for the hiring request."
             }
           ]
         }
       }
-    ],
-    "reasoning": "Based on the provided application requirements and the contact form submission entity, I recommend a simple collection to store the contact form submissions. This structure prioritizes ease of use and security. All documents within the `contactFormSubmissions` collection will share the same security rules, satisfying the homogeneous security posture requirement.\n\n**Authorization Independence:** Since there's no hierarchical relationship or user-specific ownership for contact form submissions (they are essentially public submissions to the portfolio owner), denormalization is not strictly necessary. Access control will primarily focus on preventing unauthorized writes (e.g., spam). Read access can be open, or restricted via authentication if needed in the future.\n\n**QAPs:** The structure supports listing operations securely. Limiting the number of documents returned in list queries and implementing rate limiting on form submissions will address potential abuse scenarios. Because we expect only authenticated users to manage the contact form submissions in the future, the rules will be written to only allow authenticated writes."
+    ]
   }
 }
