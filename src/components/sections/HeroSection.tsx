@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Download, Github, Linkedin } from "lucide-react";
+import { Briefcase, Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 
 export function HeroSection() {
@@ -21,8 +21,8 @@ export function HeroSection() {
             </p>
             <div className="mt-10 flex items-center justify-center md:justify-start gap-4">
               <Button asChild size="lg">
-                <Link href="/AAREEN%20RESume.pdf" target="_blank" rel="noopener noreferrer">
-                  <Download className="mr-2 h-5 w-5" /> View CV
+                <Link href="#hire">
+                  <Briefcase className="mr-2 h-5 w-5" /> Hire Me
                 </Link>
               </Button>
               <Button variant="outline" size="icon" asChild>
