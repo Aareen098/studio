@@ -30,22 +30,14 @@ const projects = [
     description: "A personal portfolio website built with Next.js and Tailwind CSS to showcase my skills and projects. Features a modern, responsive design and a clean user interface.",
     image: {
       id: "project-2",
-      imageUrl: "/%28155%29.png",
+      imageUrl: "/Screenshot (155).png",
       description: "Screenshot of My Portfolio project",
       imageHint: "portfolio website"
     },
     tags: ["Next.js", "Tailwind CSS", "TypeScript"],
     github: "https://github.com/Aareen098/studio",
     live: "https://studio-nine.vercel.app/",
-  },
-  {
-    title: "Project Three",
-    description: "A full-featured e-commerce platform with a custom CMS, payment gateway integration, and a user-friendly shopping experience.",
-    image: PlaceHolderImages.find((img) => img.id === "project-3"),
-    tags: ["Node.js", "React", "Stripe"],
-    github: "#",
-    live: "#",
-  },
+  }
 ];
 
 export function ProjectsSection() {
