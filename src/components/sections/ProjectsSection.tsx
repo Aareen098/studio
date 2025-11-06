@@ -14,7 +14,12 @@ const projects = [
   {
     title: "Project One",
     description: "A deep dive into modern web architecture, this project showcases a robust backend with a sleek, responsive frontend.",
-    image: PlaceHolderImages.find((img) => img.id === "project-1"),
+    image: {
+      id: "project-1",
+      imageUrl: "/Screenshot (154).png",
+      description: "Screenshot of Project One",
+      imageHint: "web application"
+    },
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     github: "#",
     live: "#",
