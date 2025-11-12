@@ -3,7 +3,7 @@
 
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import { School, GraduationCap, Building } from "lucide-react";
+import { School, GraduationCap, Building, Award } from "lucide-react";
 
 const educationData = [
   {
@@ -11,21 +11,24 @@ const educationData = [
     institution: "Lovely Professional University",
     period: "2025 - Present",
     icon: <GraduationCap className="h-8 w-8 text-primary" />,
-    details: "Currently pursuing my post-graduation with a focus on advanced software development, data structures, and algorithms."
+    details: "Currently pursuing my post-graduation with a focus on advanced software development, data structures, and algorithms.",
+    grade: null,
   },
   {
     degree: "Bachelor of Computer Applications (BCA)",
     institution: "Global Group of Institutes",
     period: "2022 - 2025",
     icon: <GraduationCap className="h-8 w-8 text-primary" />,
-    details: "Graduated with a strong foundation in computer science, programming languages, and web development."
+    details: "Graduated with a strong foundation in computer science, programming languages, and web development.",
+    grade: "CGPA: 8.5",
   },
   {
     degree: "Senior Secondary (XII)",
     institution: "SSSS Khlasa Sr. Sec. School",
     period: "2021 - 2022",
     icon: <School className="h-8 w-8 text-primary" />,
-    details: "Completed my higher secondary education in commerce, which gave me an early insight into business structures and sparked my interest in technology-driven solutions."
+    details: "Completed my higher secondary education in commerce, which gave me an early insight into business structures and sparked my interest in technology-driven solutions.",
+    grade: "Percentage: 88%",
   },
 ];
 
@@ -77,7 +80,7 @@ export function EducationSection() {
   );
 }
 
-const EducationCard = ({ degree, institution, period, details, rightAligned }: typeof educationData[0] & { rightAligned: boolean }) => {
+const EducationCard = ({ degree, institution, period, details, grade, rightAligned }: typeof educationData[0] & { rightAligned: boolean }) => {
   return (
     <div className={cn(
         "w-full max-w-sm p-6 bg-card rounded-lg shadow-md hover:shadow-primary/20 transition-shadow duration-300 md:mx-4 ml-12 md:ml-0",
@@ -93,6 +96,15 @@ const EducationCard = ({ degree, institution, period, details, rightAligned }: t
         <p className="text-md text-primary">{institution}</p>
       </div>
       <p className="mt-3 text-muted-foreground">{details}</p>
+      {grade && (
+        <div className={cn(
+          "flex items-center mt-3 font-semibold",
+          rightAligned ? "md:justify-end" : "md:justify-start"
+        )}>
+           <Award className="h-4 w-4 mr-2 text-primary" />
+          <p>{grade}</p>
+        </div>
+      )}
     </div>
   )
 }
