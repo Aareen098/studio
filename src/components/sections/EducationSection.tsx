@@ -20,7 +20,7 @@ const educationData = [
     period: "2022 - 2025",
     icon: <GraduationCap className="h-8 w-8 text-primary" />,
     details: "Graduated with a strong foundation in computer science, programming languages, and web development.",
-    grade: "CGPA: 8.5",
+    grade: "CGPA: 6.6",
   },
   {
     degree: "Senior Secondary (XII)",
