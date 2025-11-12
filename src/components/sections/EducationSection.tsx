@@ -45,21 +45,18 @@ export function EducationSection() {
           <p className="mt-4 text-lg text-primary">A timeline of my academic journey.</p>
         </div>
         <div className="relative mt-16">
-          <div className="absolute left-0 md:left-1/2 -translate-x-1/2 h-full w-0.5 bg-border ml-4 md:ml-0" aria-hidden="true" />
-          <div className="space-y-12">
+          <div className="absolute left-0 top-0 h-full w-0.5 bg-border ml-4 md:left-1/2 md:-translate-x-1/2 md:ml-0" aria-hidden="true" />
+          <div className="flex flex-col gap-y-12">
             {educationData.map((item, index) => (
               <div
                 key={item.degree}
-                className="relative flex items-start flex-col md:flex-row"
+                className={cn(
+                  "relative md:grid md:grid-cols-2 md:gap-x-16"
+                )}
               >
-                <div className={cn(
-                  "flex w-full md:w-1/2",
-                  index % 2 === 0 ? "md:justify-end md:pr-8" : "md:justify-start md:pl-8"
-                )}>
-                  {index % 2 === 0 ? (
-                    <EducationCard {...item} rightAligned={true} />
-                  ) : (
-                    <div className="hidden md:block w-full"></div>
+                <div className="md:col-start-1 md:row-start-1">
+                  {index % 2 !== 0 && (
+                     <EducationCard {...item} rightAligned={false} />
                   )}
                 </div>
 
@@ -67,15 +64,10 @@ export function EducationSection() {
                   {item.icon}
                 </div>
 
-                <div className={cn(
-                  "flex w-full md:w-1/2",
-                   index % 2 === 0 ? "md:justify-start md:pl-8" : "md:justify-end md:pr-8"
-                )}>
-                   {index % 2 !== 0 ? (
-                     <EducationCard {...item} rightAligned={false} />
-                   ) : (
-                     <div className="hidden md:block w-full"></div>
-                   )}
+                <div className="md:col-start-2 md:row-start-1">
+                  {index % 2 === 0 && (
+                     <EducationCard {...item} rightAligned={true} />
+                  )}
                 </div>
               </div>
             ))}
@@ -90,13 +82,13 @@ const EducationCard = ({ degree, institution, period, details, grade, rightAlign
   return (
     <div className={cn(
         "w-full max-w-sm p-6 bg-card rounded-lg shadow-md hover:shadow-primary/20 transition-shadow duration-300 ml-12 md:ml-0",
-        rightAligned ? "md:text-right" : "md:text-left"
+        rightAligned ? "md:text-left" : "md:text-right"
     )}>
       <p className="text-sm text-muted-foreground">{period}</p>
       <h3 className="text-xl font-bold text-foreground mt-1">{degree}</h3>
       <div className={cn(
           "flex items-center mt-2",
-          rightAligned ? "md:justify-end" : "md:justify-start"
+          rightAligned ? "md:justify-start" : "md:justify-end"
       )}>
         <Building className="h-4 w-4 mr-2 text-muted-foreground" />
         <p className="text-md text-primary">{institution}</p>
@@ -105,7 +97,7 @@ const EducationCard = ({ degree, institution, period, details, grade, rightAlign
       {grade && (
         <div className={cn(
           "flex items-center mt-3 font-semibold",
-          rightAligned ? "md:justify-end" : "md:justify-start"
+          rightAligned ? "md:justify-start" : "md:justify-end"
         )}>
            <Award className="h-4 w-4 mr-2 text-primary" />
           <p>{grade}</p>
