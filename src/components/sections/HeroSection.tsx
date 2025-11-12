@@ -9,17 +9,17 @@ export function HeroSection() {
     <section id="home" className="py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <div className="text-center md:text-left">
-            <h1 className="text-4xl font-bold tracking-tighter text-foreground sm:text-6xl md:text-7xl">
+          <div className="text-center lg:text-left">
+            <h1 className="text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
               Aareen Anand
             </h1>
-            <p className="mt-4 text-2xl font-medium tracking-tight text-primary">
+            <p className="mt-4 text-xl font-medium tracking-tight text-primary sm:text-2xl">
             Front-End Specialist | Cybersecurity Enthusiast
             </p>
-            <p className="mt-6 max-w-xl mx-auto md:mx-0 text-lg text-muted-foreground">
+            <p className="mt-6 max-w-xl mx-auto lg:mx-0 text-lg text-muted-foreground">
             I develop responsive and dynamic web applications with a focus on performance, usability, and security. My goal is to create digital products that not only look great but are reliable and secure from the ground up.
             </p>
-            <div className="mt-10 flex items-center justify-center md:justify-start gap-4">
+            <div className="mt-10 flex items-center justify-center lg:justify-start gap-4">
               <Button asChild size="lg">
                 <Link href="#hire">
                   <Briefcase className="mr-2 h-5 w-5" /> Hire Me
@@ -39,7 +39,7 @@ export function HeroSection() {
           </div>
           <div className="flex justify-center">
             <div
-              className="relative w-80 h-80 rounded-full overflow-hidden shadow-2xl animate-glow"
+              className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden shadow-2xl animate-glow"
               role="img"
               aria-label="Aareen's professional headshot."
               style={{

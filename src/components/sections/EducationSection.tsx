@@ -42,29 +42,31 @@ export function EducationSection() {
           <p className="mt-4 text-lg text-primary">A timeline of my academic journey.</p>
         </div>
         <div className="relative mt-16">
-          <div className="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-border" aria-hidden="true" />
+          <div className="absolute left-0 md:left-1/2 -translate-x-1/2 h-full w-0.5 bg-border ml-4 md:ml-0" aria-hidden="true" />
           <div className="space-y-12">
             {educationData.map((item, index) => (
               <div
                 key={item.degree}
-                className="relative flex items-center"
+                className="relative flex items-center md:items-start flex-col md:flex-row"
               >
                 <div className={cn(
-                  "flex w-1/2",
-                  index % 2 === 0 ? "justify-end" : "justify-start"
+                  "flex w-full md:w-1/2",
+                  index % 2 === 0 ? "md:justify-end" : "md:justify-start"
                 )}>
-                  {index % 2 === 0 && <EducationCard {...item} />}
+                  {index % 2 === 0 && <EducationCard {...item} rightAligned={true} />}
+                  {index % 2 !== 0 && <div className="hidden md:block w-full"></div>}
                 </div>
 
-                <div className="absolute left-1/2 -translate-x-1/2 bg-background p-2 rounded-full border-2 border-primary">
+                <div className="absolute left-0 md:left-1/2 -translate-x-1/2 bg-background p-2 rounded-full border-2 border-primary ml-4 md:ml-0">
                   {item.icon}
                 </div>
 
                 <div className={cn(
-                  "flex w-1/2",
-                   index % 2 === 0 ? "justify-start" : "justify-end"
+                  "flex w-full md:w-1/2",
+                   index % 2 === 0 ? "md:justify-start" : "md:justify-end"
                 )}>
-                   {index % 2 !== 0 && <EducationCard {...item} />}
+                   {index % 2 !== 0 && <EducationCard {...item} rightAligned={false} />}
+                   {index % 2 === 0 && <div className="hidden md:block w-full"></div>}
                 </div>
               </div>
             ))}
@@ -75,12 +77,18 @@ export function EducationSection() {
   );
 }
 
-const EducationCard = ({ degree, institution, period, details }: typeof educationData[0]) => {
+const EducationCard = ({ degree, institution, period, details, rightAligned }: typeof educationData[0] & { rightAligned: boolean }) => {
   return (
-    <div className="w-full max-w-sm p-6 bg-card rounded-lg shadow-md hover:shadow-primary/20 transition-shadow duration-300 mx-4">
+    <div className={cn(
+        "w-full max-w-sm p-6 bg-card rounded-lg shadow-md hover:shadow-primary/20 transition-shadow duration-300 md:mx-4 ml-12 md:ml-0",
+        rightAligned ? "md:text-right" : "md:text-left"
+    )}>
       <p className="text-sm text-muted-foreground">{period}</p>
       <h3 className="text-xl font-bold text-foreground mt-1">{degree}</h3>
-      <div className="flex items-center mt-2">
+      <div className={cn(
+          "flex items-center mt-2",
+          rightAligned ? "md:justify-end" : "md:justify-start"
+      )}>
         <Building className="h-4 w-4 mr-2 text-muted-foreground" />
         <p className="text-md text-primary">{institution}</p>
       </div>

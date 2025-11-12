@@ -14,11 +14,11 @@ import { Github, ExternalLink } from "lucide-react";
 const projects = [
   {
     title: "PhishAware",
-    description: "An interactive, web-based learning app that helps users recognize and defend against phishing, fake websites, and social engineering.",
+    description: "PhishAware is an interactive, web-based learning app that helps users recognize and defend against phishing, fake websites, and social engineering.",
     image: {
       id: "project-1",
       imageUrl: "/Screenshot (154).png",
-      description: "Screenshot of PhishAware project",
+      description: "Screenshot of PhishAware, a phishing awareness simulator.",
       imageHint: "web application security"
     },
     tags: ["Next.js", "TypeScript", "Firebase"],
@@ -52,7 +52,7 @@ export function ProjectsSection() {
           </h2>
           <p className="mt-4 text-lg text-primary">A glimpse into what I can do.</p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
             <Card key={project.title} className="flex flex-col overflow-hidden group h-full">
               {project.image && (

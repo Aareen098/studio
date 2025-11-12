@@ -33,7 +33,7 @@ export function CertificationsSection() {
           </h2>
           <p className="mt-4 text-lg text-primary">My credentials and qualifications.</p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {certifications.map((cert) => (
             <Card key={cert.title} className="flex flex-col group h-full">
               <CardHeader>
