@@ -61,7 +61,7 @@ export function SkillsSection() {
       id="skills"
       ref={ref}
       className={cn(
-        "py-16 sm:py-24",
+        "py-16 sm:py-24 bg-card",
         inView ? "opacity-100 animate-fade-in-up" : "opacity-0"
       )}
     >
