@@ -9,13 +9,13 @@ const educationData = [
   {
     degree: "Master of Computer Applications (MCA)",
     institution: "Lovely Professional University",
-    period: "2023 - 2025",
+    period: "2025 - Present",
     icon: <GraduationCap className="h-8 w-8 text-primary" />,
     details: "Currently pursuing my post-graduation with a focus on advanced software development, data structures, and algorithms."
   },
   {
     degree: "Bachelor of Computer Applications (BCA)",
-    institution: "Techno Institute of Higher Studies",
+    institution: "Global Group of Institutes",
     period: "2022 - 2025",
     icon: <GraduationCap className="h-8 w-8 text-primary" />,
     details: "Graduated with a strong foundation in computer science, programming languages, and web development."
