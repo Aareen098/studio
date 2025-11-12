@@ -89,7 +89,7 @@ export function EducationSection() {
 const EducationCard = ({ degree, institution, period, details, grade, rightAligned }: typeof educationData[0] & { rightAligned: boolean }) => {
   return (
     <div className={cn(
-        "w-full max-w-sm p-6 bg-card rounded-lg shadow-md hover:shadow-primary/20 transition-shadow duration-300 ml-12 md:ml-0",
+        "w-full max-w-sm p-6 bg-card rounded-lg shadow-md hover:shadow-primary/20 transition-shadow duration-300 ml-8 md:ml-0",
         rightAligned ? "md:text-right" : "md:text-left"
     )}>
       <p className="text-sm text-muted-foreground">{period}</p>
