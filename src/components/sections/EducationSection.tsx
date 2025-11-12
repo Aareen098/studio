@@ -50,14 +50,17 @@ export function EducationSection() {
             {educationData.map((item, index) => (
               <div
                 key={item.degree}
-                className="relative flex items-center md:items-start flex-col md:flex-row"
+                className="relative flex items-start flex-col md:flex-row"
               >
                 <div className={cn(
                   "flex w-full md:w-1/2",
-                  index % 2 === 0 ? "md:justify-end" : "md:justify-start"
+                  index % 2 === 0 ? "md:justify-end md:pr-8" : "md:justify-start md:pl-8"
                 )}>
-                  {index % 2 === 0 && <EducationCard {...item} rightAligned={true} />}
-                  {index % 2 !== 0 && <div className="hidden md:block w-full"></div>}
+                  {index % 2 === 0 ? (
+                    <EducationCard {...item} rightAligned={true} />
+                  ) : (
+                    <div className="hidden md:block w-full"></div>
+                  )}
                 </div>
 
                 <div className="absolute left-0 md:left-1/2 -translate-x-1/2 bg-background p-2 rounded-full border-2 border-primary ml-4 md:ml-0">
@@ -66,10 +69,13 @@ export function EducationSection() {
 
                 <div className={cn(
                   "flex w-full md:w-1/2",
-                   index % 2 === 0 ? "md:justify-start" : "md:justify-end"
+                   index % 2 === 0 ? "md:justify-start md:pl-8" : "md:justify-end md:pr-8"
                 )}>
-                   {index % 2 !== 0 && <EducationCard {...item} rightAligned={false} />}
-                   {index % 2 === 0 && <div className="hidden md:block w-full"></div>}
+                   {index % 2 !== 0 ? (
+                     <EducationCard {...item} rightAligned={false} />
+                   ) : (
+                     <div className="hidden md:block w-full"></div>
+                   )}
                 </div>
               </div>
             ))}
@@ -83,7 +89,7 @@ export function EducationSection() {
 const EducationCard = ({ degree, institution, period, details, grade, rightAligned }: typeof educationData[0] & { rightAligned: boolean }) => {
   return (
     <div className={cn(
-        "w-full max-w-sm p-6 bg-card rounded-lg shadow-md hover:shadow-primary/20 transition-shadow duration-300 md:mx-4 ml-12 md:ml-0",
+        "w-full max-w-sm p-6 bg-card rounded-lg shadow-md hover:shadow-primary/20 transition-shadow duration-300 ml-12 md:ml-0",
         rightAligned ? "md:text-right" : "md:text-left"
     )}>
       <p className="text-sm text-muted-foreground">{period}</p>
