@@ -16,16 +16,16 @@ const educationData = [
   {
     degree: "Bachelor of Computer Applications (BCA)",
     institution: "Techno Institute of Higher Studies",
-    period: "2020 - 2023",
+    period: "2022 - 2025",
     icon: <GraduationCap className="h-8 w-8 text-primary" />,
     details: "Graduated with a strong foundation in computer science, programming languages, and web development."
   },
   {
     degree: "Senior Secondary (XII)",
-    institution: "St. Andrews Scots Sr. Sec. School",
-    period: "2019 - 2020",
+    institution: "SSSS Khlasa Sr. Sec. School",
+    period: "2021 - 2022",
     icon: <School className="h-8 w-8 text-primary" />,
-    details: "Completed my higher secondary education with a focus on science and mathematics, sparking my interest in technology."
+    details: "Completed my higher secondary education in commerce, which gave me an early insight into business structures and sparked my interest in technology-driven solutions."
   },
 ];
 
