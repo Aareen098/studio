@@ -47,7 +47,7 @@ export function HeroSection() {
               }}
             >
               <Image
-                src="/IMG-20241028-WA0018.jpg"
+                src="/myimg.jpg"
                 alt="Aareen's professional headshot"
                 fill
                 style={{ objectFit: 'cover' }}
