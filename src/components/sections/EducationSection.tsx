@@ -51,24 +51,35 @@ export function EducationSection() {
               <div
                 key={item.degree}
                 className={cn(
-                  "relative md:grid md:grid-cols-2 md:gap-x-16"
+                  "relative flex items-center",
+                  index % 2 === 0 ? "md:justify-start" : "md:justify-end"
                 )}
               >
-                <div className="md:col-start-1 md:row-start-1">
-                  {index % 2 !== 0 && (
-                     <EducationCard {...item} rightAligned={false} />
-                  )}
+                {/* Mobile view card is always on the right */}
+                <div className="md:hidden w-full">
+                  <EducationCard {...item} />
                 </div>
-
-                <div className="absolute left-0 md:left-1/2 -translate-x-1/2 bg-background p-2 rounded-full border-2 border-primary ml-4 md:ml-0">
-                  {item.icon}
-                </div>
-
-                <div className="md:col-start-2 md:row-start-1">
-                  {index % 2 === 0 && (
-                     <EducationCard {...item} rightAligned={true} />
-                  )}
-                </div>
+                
+                {/* Desktop view */}
+                {index % 2 === 0 ? (
+                  <>
+                    <div className="absolute left-0 md:left-1/2 -translate-x-1/2 bg-background p-2 rounded-full border-2 border-primary ml-4 md:ml-0">
+                      {item.icon}
+                    </div>
+                    <div className="hidden md:block w-1/2 pl-8">
+                      <EducationCard {...item} rightAligned />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="absolute left-0 md:left-1/2 -translate-x-1/2 bg-background p-2 rounded-full border-2 border-primary ml-4 md:ml-0">
+                      {item.icon}
+                    </div>
+                    <div className="hidden md:block w-1/2 pr-8">
+                       <EducationCard {...item} />
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
@@ -78,26 +89,26 @@ export function EducationSection() {
   );
 }
 
-const EducationCard = ({ degree, institution, period, details, grade, rightAligned }: typeof educationData[0] & { rightAligned: boolean }) => {
+const EducationCard = ({ degree, institution, period, details, grade, rightAligned }: typeof educationData[0] & { rightAligned?: boolean }) => {
   return (
     <div className={cn(
         "w-full max-w-sm p-6 bg-card rounded-lg shadow-md hover:shadow-primary/20 transition-shadow duration-300 ml-12 md:ml-0",
-        rightAligned ? "md:text-left" : "md:text-right"
+        !rightAligned && "md:ml-auto"
     )}>
-      <p className="text-sm text-muted-foreground">{period}</p>
-      <h3 className="text-xl font-bold text-foreground mt-1">{degree}</h3>
+      <p className={cn("text-sm text-muted-foreground", !rightAligned && "md:text-right")}>{period}</p>
+      <h3 className={cn("text-xl font-bold text-foreground mt-1", !rightAligned && "md:text-right")}>{degree}</h3>
       <div className={cn(
           "flex items-center mt-2",
-          rightAligned ? "md:justify-start" : "md:justify-end"
+          !rightAligned && "md:justify-end"
       )}>
         <Building className="h-4 w-4 mr-2 text-muted-foreground" />
         <p className="text-md text-primary">{institution}</p>
       </div>
-      <p className="mt-3 text-muted-foreground">{details}</p>
+      <p className={cn("mt-3 text-muted-foreground", !rightAligned && "md:text-right")}>{details}</p>
       {grade && (
         <div className={cn(
           "flex items-center mt-3 font-semibold",
-          rightAligned ? "md:justify-start" : "md:justify-end"
+          !rightAligned && "md:justify-end"
         )}>
            <Award className="h-4 w-4 mr-2 text-primary" />
           <p>{grade}</p>
