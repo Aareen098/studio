@@ -41,7 +41,7 @@ export function AchievementsSection() {
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {achievements.map((achievement) => (
             <Card key={achievement.title} className="flex flex-col overflow-hidden group">
-              <div className="relative h-48 w-full overflow-hidden">
+              <div className="relative h-48 w-full overflow-hidden mt-4">
                 <Image
                   src={achievement.image}
                   alt={achievement.description}
