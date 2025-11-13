@@ -31,7 +31,7 @@ export function Footer() {
             </Button>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-sm text-muted-foreground md:order-2">
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-sm text-muted-foreground md:order-2">
             <a href="mailto:your-email@example.com" className="flex items-center gap-2 hover:text-primary transition-colors">
               <Mail className="h-4 w-4" />
               <span>your-email@example.com</span>
